@@ -25,6 +25,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: rgb(44, 44, 44);
+	color: white;
 }
 ol, ul {
 	list-style: none;
@@ -96,4 +98,46 @@ footer{
     padding: 10px;
     bottom: 0;
     width: 100%;
+}
+
+.card-container {
+ 	display: flex;
+	 justify-content: space-evenly;
+ 	overflow-x: auto; 
+  	scroll-behavior: smooth; 
+  	scrollbar-width: none; 
+  	-ms-overflow-style: none;
+  	white-space: nowrap;
+  	padding: 10px 0;
+	width: 100%;
+	  
+}
+.card-container::-webkit-scrollbar {
+	display: none;
+  }
+
+.card {
+	background-color: rgba(0, 0, 0, 0.63);
+	color: white;
+	width: 20rem;
+	height: 24rem;
+	border-radius: 7%;
+	flex: 0 0 auto;
+  	margin: 0 20px;
+	text-align: center;
+	
+}
+
+/* .card p {
+	color: white;
+} */
+
+.card img {
+	width: 100%;
+	padding-top: 40px;
+}
+
+.description {
+	font-size: large;
+
 }
