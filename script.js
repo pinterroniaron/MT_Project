@@ -8,9 +8,11 @@ const options = {
 };
 
 try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
+	const response = fetch(url, options).then((res=>{
+        const result = res.text().then((data)=>{
+            console.log(data)
+        })
+    }));
 } catch (error) {
 	console.error(error);
 }
