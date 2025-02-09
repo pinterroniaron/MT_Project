@@ -7,19 +7,28 @@ const options = {
 	}
 };
 let productsNames = [];
-let productsImgUrl= []; 
+let productsImgUrl= [];
+let productsPrice = []; 
+const productName = document.querySelectorAll('.product-name');
 const productImg = document.querySelectorAll('.product-img');
-
+const productPrice = document.querySelectorAll('.product-price');
 try {
   	const response = fetch(url, options).then((res=>{
           const result = res.json().then((data)=>{
             console.log(data);
               productsNames = data.products.map(product => product.name);
               productsImgUrl = data.products.map(product => product.imageUrl);
-
+              productsPrice = data.products.map(product => product.price.current.text);
                 for (let i = 0; i < productImg.length; i++) {
+                  
                   productImg[i].src ="http://" + productsImgUrl[i];
+                  productImg[i].alt = productsNames[i];
+                  productImg[i].title = productsNames[i];
+                  productName[i].innerText = productsNames[i];
+                  productPrice[i].innerText = productsPrice[i];
+            
                 }
+               
                 
                 
               // console.log(productsNames);
