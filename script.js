@@ -7,7 +7,8 @@ const options = {
 	}
 };
 let productsNames = [];
-let productsImgUrl= [];
+let productsImgUrl= []; 
+const productImg = document.querySelectorAll('.product-img');
 
 try {
   	const response = fetch(url, options).then((res=>{
@@ -15,13 +16,23 @@ try {
             console.log(data);
               productsNames = data.products.map(product => product.name);
               productsImgUrl = data.products.map(product => product.imageUrl);
-              console.log(productsNames);
-              console.log(productsImgUrl);
+
+                for (let i = 0; i < productImg.length; i++) {
+                  productImg[i].src ="http://" + productsImgUrl[i];
+                }
+                
+                
+              // console.log(productsNames);
+              // console.log(productsImgUrl);
           })
       }));
   } catch (error) {
   	console.error(error);
 }
+
+
+
+
 
 
 
