@@ -69,7 +69,7 @@ try {
         productImg[i].alt = productsNames[i];
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
-        productPrice[i].innerText = productsPrice[i];
+        productPrice[i].innerText = productsPrice[i]*400 + "Ft";
       }
     })
   }));
@@ -80,9 +80,14 @@ catch (error) {
 
 
 
-const cardContainer = document.querySelector('.card-container');
+const cardContainer = document.querySelector('.vertical-scroll');
 
-cardContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  cardContainer.scrollLeft += (event.deltaY * 8);
-});
+if (!window.matchMedia("(max-width: 1200px)").matches) {
+  cardContainer.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    cardContainer.scrollLeft += (event.deltaY * 8);
+  });
+
+}
+
+
