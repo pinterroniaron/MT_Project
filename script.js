@@ -52,9 +52,15 @@ const options = {
 let productsNames = [];
 let productsImgUrl = [];
 let productsPrice = [];
+let productsCategory = [];
+let productsCat = [];
 const productName = document.querySelectorAll('.product-name');
 const productImg = document.querySelectorAll('.product-img');
 const productPrice = document.querySelectorAll('.product-price');
+const productCategory = document.querySelectorAll('.product-category');
+const productCard = document.querySelectorAll('.card');
+const test = document.querySelectorAll('.test');
+const testarea = document.querySelector('.testarea');
 try {
   const response = fetch(url, options).then((res => {
     const result = res.json().then((data) => {
@@ -62,15 +68,23 @@ try {
       productsNames = data.map(product => product.title);
       productsImgUrl = data.map(product => product.image);
       productsPrice = data.map(product => product.price);
+      productsCategory = data.map(product => product.category);
+      console.log(productsCategory);
 
-      console.log(productsNames);
-      for (let i = 0; i < productImg.length; i++) {
+      for (let i = 0; i < data.length; i++) {
         productImg[i].src = productsImgUrl[i];
         productImg[i].alt = productsNames[i];
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
         productPrice[i].innerText = productsPrice[i];
+        productCard[i].setAttribute('product-category', productsCategory[i]);
+        console.log(productCard[i]);
+        
+        
+
+        
       }
+
     })
   }));
 }
