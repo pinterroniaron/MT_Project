@@ -65,7 +65,7 @@ try {
 
       console.log(productsNames);
       for (let i = 0; i < productImg.length; i++) {
-        productImg[i].src = "http://" + productsImgUrl[i];
+        productImg[i].src = productsImgUrl[i];
         productImg[i].alt = productsNames[i];
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
