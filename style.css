@@ -147,6 +147,7 @@ footer{
 	height: auto;
 	border-radius: 7%;
 	object-fit: cover;
+	overflow: hidden;
 }
 
 .description {
