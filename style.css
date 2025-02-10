@@ -108,6 +108,7 @@ footer{
   	white-space: nowrap;
 	width: 100%;
 	height: 50vh;
+	margin-bottom: 20px;
 	
 }
 
@@ -143,8 +144,9 @@ footer{
 
 .card img {
 	width: 70%;
-	padding-top: 40px;
+	height: auto;
 	border-radius: 7%;
+	object-fit: cover;
 }
 
 .description {
@@ -160,9 +162,13 @@ footer{
 	font-size: large;
     word-wrap: break-word;
     white-space: normal; /* Ensures text wraps */
-    overflow: hidden; /* Prevents breaking out of the card */
+    overflow: visible; /* Prevents breaking out of the card */
     max-width: 100%; /* Prevents text from overflowing */
 	padding: 15px;
+}
+
+.product-price {
+	margin-top: auto;
 }
 
 

@@ -69,7 +69,7 @@ try {
         productImg[i].alt = productsNames[i];
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
-        productPrice[i].innerText = productsPrice[i];
+        productPrice[i].innerText = productsPrice[i]*400 + "Ft";
       }
     })
   }));
