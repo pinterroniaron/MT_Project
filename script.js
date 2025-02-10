@@ -52,24 +52,28 @@ const options = {
 let productsNames = [];
 let productsImgUrl = [];
 let productsPrice = [];
-let productsCategory = [];
-let productsCat = [];
+let productsCategories = [];
+let categories = [];
 const productName = document.querySelectorAll('.product-name');
 const productImg = document.querySelectorAll('.product-img');
 const productPrice = document.querySelectorAll('.product-price');
-const productCategory = document.querySelectorAll('.product-category');
 const productCard = document.querySelectorAll('.card');
-const test = document.querySelectorAll('.test');
-const testarea = document.querySelector('.testarea');
+const categoryPlace = document.querySelectorAll('.categoryPlace');
+const categoryArea = document.querySelector('.categoryArea');
 try {
   const response = fetch(url, options).then((res => {
     const result = res.json().then((data) => {
-      console.log(data);
+      //console.log(data);
       productsNames = data.map(product => product.title);
       productsImgUrl = data.map(product => product.image);
       productsPrice = data.map(product => product.price);
-      productsCategory = data.map(product => product.category);
-      console.log(productsCategory);
+      productsCategories = data.map(product => product.category);
+      productsCategories.forEach(element => {
+        if (!categories.includes(element)) {
+          categories.push(element);
+         }
+       });
+       //console.log(categories);
 
       for (let i = 0; i < data.length; i++) {
         productImg[i].src = productsImgUrl[i];
@@ -77,22 +81,42 @@ try {
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
         productPrice[i].innerText = productsPrice[i];
-        productCard[i].setAttribute('product-category', productsCategory[i]);
-        console.log(productCard[i]);
-        
+        productCard[i].setAttribute('product-category', productsCategories[i]);
+        // console.log(productCard[i]);
         
 
+        for (let i = 0; i < categories.length; i++) {
         
+          categoryPlace[i].innerText = categories[i];
+        
+        };
       }
-
-    })
+      // console.log(productCard);
+      // categoryArea.addEventListener('click', (event) => {
+      //   const category = event.target.innerText;
+        
+      //   productCard.forEach((card) => {
+      //     if (category == productCard.getAttribute('product-category')) {
+      //       categoryArea.innerHTML = productCard;
+      //     };
+      //   });
+      // });
+    });
   }));
 }
 catch (error) {
   console.error(error);
 }
 
-
+// function filter(category) {
+//   category = categories[category];
+//   productCard.forEach((card) => {
+//     if (category == card.getAttribute('product-category')) {
+//       console.log(category);
+//       categoryArea.innerHTML += card;
+//     }
+//   });
+// }
 
 const cardContainer = document.querySelector('.card-container');
 
