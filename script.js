@@ -59,9 +59,9 @@ try {
   const response = fetch(url, options).then((res => {
     const result = res.json().then((data) => {
       console.log(data);
-      productsNames = data.products.map(product => product.title);
-      productsImgUrl = data.products.map(product => product.image);
-      productsPrice = data.products.map(product => product.price);
+      productsNames = data.map(product => product.title);
+      productsImgUrl = data.map(product => product.image);
+      productsPrice = data.map(product => product.price);
 
       console.log(productsNames);
       for (let i = 0; i < productImg.length; i++) {
