@@ -31,38 +31,18 @@
 </section>
 
 <section>
-    <div class="card-container">
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
-        <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img"><p class="product-price">Price</p></div>
+    <div id="productContainer" class="card-container">   
     </div>
 </section>
 <p></p>
 <section>
-    <select title="categoryList" id="categoryList">
-        <option class="categoryOptions"></option>
-        <option class="categoryOptions"></option>
-        <option class="categoryOptions"></option>
-        <option class="categoryOptions"></option>
+    <select title="categoryList" onchange="onChangeCategory(this.value)">
+        <option class="categoryOptions" value="all" >All</option>
+        <option class="categoryOptions" value="men's clothing">men's clothing</option>
+        <option class="categoryOptions" value="jewelery">jewelry</option>
+        <option class="categoryOptions" value="electronics">electronics</option>
+        <option class="categoryOptions" value="women's clothing">women's clothing</option>
     </select>
-    <div class="categoryArea card-container"></div>
 </section>
     <footer>
         <div>
@@ -71,6 +51,6 @@
             <p>E-mail: MAK@citromail.hu</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>
