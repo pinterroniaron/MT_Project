@@ -58,7 +58,7 @@ const productName = document.querySelectorAll('.product-name');
 const productImg = document.querySelectorAll('.product-img');
 const productPrice = document.querySelectorAll('.product-price');
 const productCard = document.querySelectorAll('.card');
-const categoryPlace = document.querySelectorAll('.categoryPlace');
+const categoryOptions = document.querySelectorAll('.categoryOptions');
 const categoryArea = document.querySelector('.categoryArea');
 try {
   const response = fetch(url, options).then((res => {
@@ -87,20 +87,12 @@ try {
 
         for (let i = 0; i < categories.length; i++) {
         
-          categoryPlace[i].innerText = categories[i];
+          categoryOptions[i].innerText = categories[i];
         
         };
       }
       // console.log(productCard);
-      // categoryArea.addEventListener('click', (event) => {
-      //   const category = event.target.innerText;
-        
-      //   productCard.forEach((card) => {
-      //     if (category == productCard.getAttribute('product-category')) {
-      //       categoryArea.innerHTML = productCard;
-      //     };
-      //   });
-      // });
+      
     });
   }));
 }
@@ -117,10 +109,22 @@ catch (error) {
 //     }
 //   });
 // }
-
-const cardContainer = document.querySelector('.card-container');
-
-cardContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  cardContainer.scrollLeft += (event.deltaY * 8);
+categoryOptions.forEach(element => {
+  const category = element;
+  category.addEventListener('click', () => {
+    productCard.forEach((card) => {
+      if (category.innerText == card.getAttribute('product-category')) {
+        console.log(category);
+        categoryArea.innerHTML += card;
+      }
+    });
+  });
 });
+
+
+// const cardContainer = document.querySelector('.card-container');
+
+// cardContainer.addEventListener('wheel', (event) => {
+//   event.preventDefault();
+//   cardContainer.scrollLeft += (event.deltaY * 8);
+// });
