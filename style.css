@@ -118,6 +118,7 @@ footer{
 	scroll-behavior: smooth; 
   	scrollbar-width: none; 
   	-ms-overflow-style: none;
+
 }
 .vertical-scroll::-webkit-scrollbar {
 	display: none;
@@ -189,4 +190,21 @@ footer{
 		display: unset;
 	  }
 
+}
+
+.arrows{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.arrows button {
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	font-size: x-large;
+	cursor: pointer;
+}
+
+.product-wrapper {
+	background-color: rgba(0, 0, 0, 0.486);
+	padding: 20px;
 }

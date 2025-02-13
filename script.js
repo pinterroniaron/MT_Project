@@ -80,14 +80,61 @@ catch (error) {
 
 
 
-const cardContainer = document.querySelector('.vertical-scroll');
-
-if (!window.matchMedia("(max-width: 1200px)").matches) {
-  cardContainer.addEventListener('wheel', (event) => {
+const cardContainer = document.querySelectorAll('.vertical-scroll')
+cardContainer.forEach(scroll => {
+  
+  scroll.addEventListener('wheel', (event) => {
     event.preventDefault();
-    cardContainer.scrollLeft += (event.deltaY * 8);
+    scroll.scrollLeft += (event.deltaY * 8);
   });
 
-}
+});;
 
 
+document.querySelectorAll('.product-wrapper').forEach(wrapper => {
+  const container = wrapper.querySelector('.vertical-scroll');
+  const leftArrow = wrapper.querySelector('.left-arrow');
+  const rightArrow = wrapper.querySelector('.right-arrow');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // Mouse Drag Scrolling
+  container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+      container.style.cursor = "grabbing";
+      document.body.style.userSelect = 'none'; // Prevents text selection
+  });
+
+  container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.style.cursor = "grab";
+      document.body.style.userSelect = ''; // Re-enable selection
+  });
+
+  container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.style.cursor = "grab";
+      document.body.style.userSelect = ''; // Re-enable selection
+  });
+
+  container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * -1.5; // Adjust speed for better feel
+      container.scrollLeft = scrollLeft + walk;
+  });
+
+  // Arrow Button Scrolling
+  leftArrow.addEventListener('click', () => {
+      container.scrollBy({ left: -700, behavior: 'smooth' });
+  });
+
+  rightArrow.addEventListener('click', () => {
+      container.scrollBy({ left: 700, behavior: 'smooth' });
+  });
+});
