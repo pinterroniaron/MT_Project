@@ -90,6 +90,7 @@ try {
           categoryOptions[i].innerText = categories[i];
         
         };
+        
         productPrice[i].innerText = productsPrice[i]*400 + "Ft";
       }
       // console.log(productCard);
@@ -129,6 +130,7 @@ categoryOptions.forEach(element => {
 //   event.preventDefault();
 //   cardContainer.scrollLeft += (event.deltaY * 8);
 // });
+
 const cardContainer = document.querySelectorAll('.vertical-scroll')
 cardContainer.forEach(scroll => {
   
