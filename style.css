@@ -83,13 +83,13 @@ header {
 h1{
     text-align: center;
     color: red;
-    font-size: 1.5vw;
+	font-size: 1.7rem;
     margin-top: 15px;
     margin-bottom: 15px
 }
 p{
     text-align: center;
-    font-size: 1vw;
+	font-size: 1.2rem;
     margin-top: 15px;
     margin-bottom: 15px
 }
@@ -105,17 +105,22 @@ footer{
 .card-container {
  	display: flex;
 	justify-content: space-evenly;
- 	overflow-y: hidden;
-	overflow-x: auto; 
-  	scroll-behavior: smooth; 
-  	scrollbar-width: none; 
-  	-ms-overflow-style: none;
   	white-space: nowrap;
 	width: 100%;
 	height: 50vh;
+	margin-bottom: 20px;
 	
 }
-.card-container::-webkit-scrollbar {
+
+.vertical-scroll {
+	overflow-y: hidden;
+	overflow-x: auto; 
+	scroll-behavior: smooth; 
+  	scrollbar-width: none; 
+  	-ms-overflow-style: none;
+
+}
+.vertical-scroll::-webkit-scrollbar {
 	display: none;
   }
 
@@ -123,7 +128,7 @@ footer{
 	background-color: rgba(0, 0, 0, 0.63);
 	color: white;
 	width: 20rem;
-	height: 24rem;
+	height: auto;
 	border-radius: 7%;
 	flex: 0 0 auto;
   	margin: 0 20px;
@@ -140,13 +145,66 @@ footer{
 
 .card img {
 	width: 70%;
-	padding-top: 40px;
+	height: auto;
 	border-radius: 7%;
-	transform: translateY(-40px);
-	
+	object-fit: cover;
+	overflow: hidden;
 }
 
 .description {
 	font-size: large;
 
+}
+
+.product-name {
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    max-height: 4.5em;
+	font-size: large;
+    word-wrap: break-word;
+    white-space: normal; /* Ensures text wraps */
+    overflow: visible; /* Prevents breaking out of the card */
+    max-width: 100%; /* Prevents text from overflowing */
+	padding: 15px;
+}
+
+.product-price {
+	margin-top: auto;
+}
+
+
+@media screen and (max-width: 1200px) {
+	.card-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		height: auto;
+		gap: 30px;
+		justify-items: center;
+		width: auto;
+	}
+	.vertical-scroll {
+		overflow: hidden;
+	}
+	.vertical-scroll::-webkit-scrollbar {
+		display: unset;
+	  }
+
+}
+
+.arrows{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.arrows button {
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	font-size: x-large;
+	cursor: pointer;
+}
+
+.product-wrapper {
+	background-color: rgba(0, 0, 0, 0.486);
+	padding: 20px;
 }

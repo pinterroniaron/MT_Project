@@ -80,17 +80,6 @@ try {
         productImg[i].alt = productsNames[i];
         productImg[i].title = productsNames[i];
         productName[i].innerText = productsNames[i];
-        productPrice[i].innerText = productsPrice[i];
-        productCard[i].setAttribute('product-category', productsCategories[i]);
-        // console.log(productCard[i]);
-        
-
-        for (let i = 0; i < categories.length; i++) {
-        
-          categoryOptions[i].innerText = categories[i];
-        
-        };
-        
         productPrice[i].innerText = productsPrice[i]*400 + "Ft";
       }
       // console.log(productCard);
@@ -130,6 +119,56 @@ categoryOptions.forEach(element => {
 //   event.preventDefault();
 //   cardContainer.scrollLeft += (event.deltaY * 8);
 // });
+
+const cardContainer = document.querySelectorAll('.vertical-scroll')
+cardContainer.forEach(scroll => {
+  
+  scroll.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    scroll.scrollLeft += (event.deltaY * 8);
+  });
+
+});;
+
+
+document.querySelectorAll('.product-wrapper').forEach(wrapper => {
+  const container = wrapper.querySelector('.vertical-scroll');
+  const leftArrow = wrapper.querySelector('.left-arrow');
+  const rightArrow = wrapper.querySelector('.right-arrow');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // Mouse Drag Scrolling
+  container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+      container.style.cursor = "grabbing";
+      document.body.style.userSelect = 'none'; // Prevents text selection
+  });
+
+  container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.style.cursor = "grab";
+      document.body.style.userSelect = ''; // Re-enable selection
+  });
+
+  container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.style.cursor = "grab";
+      document.body.style.userSelect = ''; // Re-enable selection
+  });
+
+  container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * -1.5; // Adjust speed for better feel
+      container.scrollLeft = scrollLeft + walk;
+  });
+
 
 const cardContainer = document.querySelectorAll('.vertical-scroll')
 cardContainer.forEach(scroll => {
