@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Webshop</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="products.html">
+                    <li>Products</li>
+                </a>
+                <a href="aboutus.html">
+                    <li>About Us</li>
+                </a>
+                <a href="cart.html">
+                    <li>Cart</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+<section>
+    <!-- fuzzy searchbar -->
+</section>
+
+<section>
+    <div id="productContainer" class="card-container">   
+    </div>
+</section>
+<p></p>
+<section>
+    <select title="categoryList" onchange="onChangeCategory(this.value)">
+        <option class="categoryOptions" value="all" >All</option>
+        <option class="categoryOptions" value="men's clothing">men's clothing</option>
+        <option class="categoryOptions" value="jewelery">jewelry</option>
+        <option class="categoryOptions" value="electronics">electronics</option>
+        <option class="categoryOptions" value="women's clothing">women's clothing</option>
+    </select>
+</section>
+    <footer>
+        <div>
+            <p>MAK webáruház</p>
+            <p>Telefon: +36 69 696 6969</p>
+            <p>E-mail: MAK@citromail.hu</p>
+        </div>
+    </footer>
+    <script src="script2.js"></script>
+</body>
+</html>
