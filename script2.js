@@ -2,12 +2,16 @@ const products = [];
 let filteredProducts = [];
 
 function filterByCategory(category) {
-    if(category !== 'all') {
-        filteredProducts = products.filter(element => element.category === category);}
+    if(category) {
+        filteredProducts = products.filter(element => element.category === category);
+        if(category === 'all') {
+            filteredProducts = products;
+        }}
     else  { 
         filteredProducts = products;
     }
     console.log(filteredProducts);
+    
 }
 
 function renderProducts() {
