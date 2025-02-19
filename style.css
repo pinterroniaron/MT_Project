@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,28 +86,47 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 	background-color: rgb(44, 44, 44);
 	color: white;
-	overflow-x: hidden	;
+	overflow-x: hidden;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -50,79 +137,83 @@ table {
 
 
 .navbar ul a li {
-    list-style: none;
-    font-size: 1.5vw;
-    color: white;
+	list-style: none;
+	font-size: 1.5vw;
+	color: white;
 }
 
 .navbar ul a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .navbar ul {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
 }
 
 .navbar {
-    background-color: black;
-    width: 100%;
-    height: 60px;
-    
+	background-color: black;
+	width: 100%;
+	height: 60px;
+
 }
 
 header {
-    position: sticky;
-    top: 0;
+	position: sticky;
+	top: 0;
 	z-index: 20;
 }
-h1{
-    text-align: center;
-    color: red;
+
+h1 {
+	text-align: center;
+	color: red;
 	font-size: 1.7rem;
-    margin-top: 15px;
-    margin-bottom: 15px
+	margin-top: 15px;
+	margin-bottom: 15px
 }
-p{
-    text-align: center;
+
+p {
+	text-align: center;
 	font-size: 1.2rem;
-    margin-top: 15px;
-    margin-bottom: 15px
+	margin-top: 15px;
+	margin-bottom: 15px
 }
-footer{
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    bottom: 0;
-    width: 100%;
+
+footer {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	bottom: 0;
+	width: 100%;
 }
 
 .card-container {
- 	display: flex;
+	display: flex;
 	justify-content: space-evenly;
-  	white-space: nowrap;
+	white-space: nowrap;
 	width: 100%;
 	height: 50vh;
 	margin-bottom: 20px;
-	
+
 }
 
 .vertical-scroll {
 	overflow-y: hidden;
-	overflow-x: auto; 
-	scroll-behavior: smooth; 
-  	scrollbar-width: none; 
-  	-ms-overflow-style: none;
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 
 }
+
 .vertical-scroll::-webkit-scrollbar {
 	display: none;
-  }
+}
 
 .card {
 	background-color: rgba(0, 0, 0, 0.63);
@@ -131,7 +222,7 @@ footer{
 	height: auto;
 	border-radius: 7%;
 	flex: 0 0 auto;
-  	margin: 0 20px;
+	margin: 0 20px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -158,14 +249,15 @@ footer{
 
 .product-name {
 	display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    max-height: 4.5em;
+	-webkit-line-clamp: 4;
+	line-clamp: 4;
+	-webkit-box-orient: vertical;
+	max-height: 4.5em;
 	font-size: large;
-    word-wrap: break-word;
-    white-space: normal; /* Ensures text wraps */
-    overflow: visible; /* Prevents breaking out of the card */
-    max-width: 100%; /* Prevents text from overflowing */
+	word-wrap: break-word;
+	white-space: normal; /* Ensures text wraps */
+	overflow: visible; /* Prevents breaking out of the card */
+	max-width: 100%; /* Prevents text from overflowing */
 	padding: 15px;
 }
 
@@ -183,16 +275,18 @@ footer{
 		justify-items: center;
 		width: auto;
 	}
+
 	.vertical-scroll {
 		overflow: hidden;
 	}
+
 	.vertical-scroll::-webkit-scrollbar {
 		display: unset;
-	  }
+	}
 
 }
 
-.arrows{
+.arrows {
 	display: flex;
 	justify-content: space-evenly;
 }
