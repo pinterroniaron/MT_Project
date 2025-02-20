@@ -17,6 +17,11 @@ function filterByCategory(category) {
 
 function renderProducts() {
     let productHtml = '';
+    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 5);
+    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 5);
+    
+
+    // All Products - Filtered Products
 
     filteredProducts.forEach(element => {
         productHtml += `
@@ -26,10 +31,42 @@ function renderProducts() {
         <p class="product-price">${element.price * 400} Ft</p>
     </div>
     `;
+    if(document.getElementById('productContainer')){
         document.getElementById('productContainer').innerHTML = productHtml;
-
+    }
     });
+    productHtml = '';
 
+
+    // Trending Products
+
+    trendingProducts.forEach(element => {   
+        productHtml += `
+    <div class="card ${element.category}">
+        <p class="product-name">${element.title}</p>
+        <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+        <p class="product-price">${element.price * 400} Ft</p>
+    </div>
+    `;   
+    if(document.getElementById('trendingProductContainer')) 
+        document.getElementById('trendingProductContainer').innerHTML = productHtml;
+    });
+    productHtml = '';
+
+
+    // Sale Products
+
+    saleProducts.forEach(element => {   
+        productHtml += `
+    <div class="card ${element.category}">
+        <p class="product-name">${element.title}</p>
+        <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+        <div class="product-price"><p><s>${element.price*400} Ft</s></p><p>${Math.round((element.price-element.price*0.30)* 400)} Ft</p></div>  
+    </div>
+    `;   
+    if(document.getElementById('saleProductContainer')) 
+        document.getElementById('saleProductContainer').innerHTML = productHtml;
+    });
 }
 
 function onChangeCategory(value) {
