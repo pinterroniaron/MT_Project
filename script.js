@@ -19,55 +19,59 @@ function renderProducts() {
     let productHtml = '';
     const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 5);
     const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 5);
-    
+
 
     // All Products - Filtered Products
-
-    filteredProducts.forEach(element => {
-        productHtml += `
-    <div class="card ${element.category}">
-        <p class="product-name">${element.title}</p>
-        <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-        <p class="product-price">${element.price * 400} Ft</p>
-    </div>
-    `;
     if(document.getElementById('productContainer')){
-        document.getElementById('productContainer').innerHTML = productHtml;
-    }
-    });
-    productHtml = '';
+        filteredProducts.forEach(element => {
+            productHtml += `
+        <div class="card ${element.category}">
+            <p class="product-name">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+            <p class="product-price">${element.price * 400} Ft</p>
+        </div>
+        `;
+
+            document.getElementById('productContainer').innerHTML = productHtml;
+
+        });
+    };
+    console.log(document.getElementById('productContainer'));
+productHtml = '';
 
 
-    // Trending Products
-
-    trendingProducts.forEach(element => {   
+// Trending Products
+if(document.getElementById('trendingProductContainer')){
+    trendingProducts.forEach(element => {
         productHtml += `
-    <div class="card ${element.category}">
-        <p class="product-name">${element.title}</p>
-        <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-        <p class="product-price">${element.price * 400} Ft</p>
-    </div>
-    `;   
-    if(document.getElementById('trendingProductContainer')) 
-        document.getElementById('trendingProductContainer').innerHTML = productHtml;
+        <div class="card ${element.category}">
+            <p class="product-name">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+            <p class="product-price">${element.price * 400} Ft</p>
+        </div>
+        `;
+        
+            document.getElementById('trendingProductContainer').innerHTML = productHtml;
     });
-    productHtml = '';
+};
+productHtml = '';
 
 
-    // Sale Products
-
-    saleProducts.forEach(element => {   
+// Sale Products
+if(document.getElementById('saleProductContainer')){
+    saleProducts.forEach(element => {
         productHtml += `
-    <div class="card ${element.category}">
-        <p class="product-name">${element.title}</p>
-        <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-        <div class="product-price"><p><s>${element.price*400} Ft</s></p><p>${Math.round((element.price-element.price*0.30)* 400)} Ft</p></div>  
-    </div>
-    `;   
-    if(document.getElementById('saleProductContainer')) 
-        document.getElementById('saleProductContainer').innerHTML = productHtml;
+        <div class="card ${element.category}">
+            <p class="product-name">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+            <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
+        </div>
+        `;
+        
+            document.getElementById('saleProductContainer').innerHTML = productHtml;
     });
-}
+};
+};
 
 function onChangeCategory(value) {
     console.log(value);
@@ -110,27 +114,27 @@ function fetchProducts() {
 
 
 function handleScroll(event) {
-  event.preventDefault();
-  this.scrollLeft += event.deltaY * 8;
+    event.preventDefault();
+    this.scrollLeft += event.deltaY * 8;
 }
 
-
+const cardContainer = document.querySelectorAll('.card-container');
 function updateScrollBehavior() {
-  if (window.innerWidth >= 1200) {
-    // Enable scroll effect
-    cardContainer.forEach(scroll => {
-      if (!scroll.hasAttribute('data-scroll-enabled')) {
-        scroll.addEventListener('wheel', handleScroll);
-        scroll.setAttribute('data-scroll-enabled', 'true'); // Mark as enabled
-      }
-    });
-  } else {
-    // Disable scroll effect
-    cardContainer.forEach(scroll => {
-      scroll.removeEventListener('wheel', handleScroll);
-      scroll.removeAttribute('data-scroll-enabled'); // Remove marker
-    });
-  }
+    if (window.innerWidth >= 1200) {
+        // Enable scroll effect
+        cardContainer.forEach(scroll => {
+            if (!scroll.hasAttribute('data-scroll-enabled')) {
+                scroll.addEventListener('wheel', handleScroll);
+                scroll.setAttribute('data-scroll-enabled', 'true'); // Mark as enabled
+            }
+        });
+    } else {
+        // Disable scroll effect
+        cardContainer.forEach(scroll => {
+            scroll.removeEventListener('wheel', handleScroll);
+            scroll.removeAttribute('data-scroll-enabled'); // Remove marker
+        });
+    }
 }
 
 // Run on load
@@ -143,93 +147,93 @@ window.addEventListener('resize', updateScrollBehavior);
 
 
 function updateProductWrapperBehavior() {
-  document.querySelectorAll('.product-wrapper').forEach(wrapper => {
-    const container = wrapper.querySelector('.vertical-scroll');
-    const leftArrow = wrapper.querySelector('.left-arrow');
-    const rightArrow = wrapper.querySelector('.right-arrow');
+    document.querySelectorAll('.product-wrapper').forEach(wrapper => {
+        const container = wrapper.querySelector('.vertical-scroll');
+        const leftArrow = wrapper.querySelector('.left-arrow');
+        const rightArrow = wrapper.querySelector('.right-arrow');
 
-    if (!container || !leftArrow || !rightArrow) return; // Prevent errors
+        if (!container || !leftArrow || !rightArrow) return; // Prevent errors
 
-    if (window.innerWidth < 1200) {
-      // Disable custom scrolling behavior, enable default scrolling
-      container.style.overflowX = 'auto';
-      container.style.cursor = 'default';
+        if (window.innerWidth < 1200) {
+            // Disable custom scrolling behavior, enable default scrolling
+            container.style.overflowX = 'auto';
+            container.style.cursor = 'default';
 
-      // Remove event listeners for dragging
-      container.removeEventListener('mousedown', handleMouseDown);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-      container.removeEventListener('mouseup', handleMouseUp);
-      container.removeEventListener('mousemove', handleMouseMove);
+            // Remove event listeners for dragging
+            container.removeEventListener('mousedown', handleMouseDown);
+            container.removeEventListener('mouseleave', handleMouseLeave);
+            container.removeEventListener('mouseup', handleMouseUp);
+            container.removeEventListener('mousemove', handleMouseMove);
 
-      // Remove event listeners for arrows
-      leftArrow.removeEventListener('click', handleLeftClick);
-      rightArrow.removeEventListener('click', handleRightClick);
+            // Remove event listeners for arrows
+            leftArrow.removeEventListener('click', handleLeftClick);
+            rightArrow.removeEventListener('click', handleRightClick);
 
-      // Remove attribute tracking events
-      container.removeAttribute('data-events-added');
-      
-    } else {
-      // Enable custom scrolling behavior
-      container.style.overflowX = 'hidden'; // Hide native scrollbar
-      container.style.cursor = 'grab';
+            // Remove attribute tracking events
+            container.removeAttribute('data-events-added');
 
-      // Ensure event listeners are only added once
-      if (!container.hasAttribute('data-events-added')) {
-        container.addEventListener('mousedown', handleMouseDown);
-        container.addEventListener('mouseleave', handleMouseLeave);
-        container.addEventListener('mouseup', handleMouseUp);
-        container.addEventListener('mousemove', handleMouseMove);
+        } else {
+            // Enable custom scrolling behavior
+            container.style.overflowX = 'hidden'; // Hide native scrollbar
+            container.style.cursor = 'grab';
 
-        leftArrow.addEventListener('click', handleLeftClick);
-        rightArrow.addEventListener('click', handleRightClick);
+            // Ensure event listeners are only added once
+            if (!container.hasAttribute('data-events-added')) {
+                container.addEventListener('mousedown', handleMouseDown);
+                container.addEventListener('mouseleave', handleMouseLeave);
+                container.addEventListener('mouseup', handleMouseUp);
+                container.addEventListener('mousemove', handleMouseMove);
 
-        container.setAttribute('data-events-added', 'true'); // Mark as initialized
-      }
-    }
-  });
+                leftArrow.addEventListener('click', handleLeftClick);
+                rightArrow.addEventListener('click', handleRightClick);
+
+                container.setAttribute('data-events-added', 'true'); // Mark as initialized
+            }
+        }
+    });
 }
 
 // Mouse Drag Handlers
 function handleMouseDown(e) {
-  const container = this;
-  container.isDown = true;
-  container.startX = e.pageX - container.offsetLeft;
-  container.scrollLeftStart = container.scrollLeft;
-  container.style.cursor = "grabbing";
-  document.body.style.userSelect = 'none';
+    const container = this;
+    container.isDown = true;
+    container.startX = e.pageX - container.offsetLeft;
+    container.scrollLeftStart = container.scrollLeft;
+    container.style.cursor = "grabbing";
+    document.body.style.userSelect = 'none';
 }
 
 
 function handleMouseLeave() {
-  this.isDown = false;
-  this.style.cursor = "grab";
-  document.body.style.userSelect = '';
+    this.isDown = false;
+    this.style.cursor = "grab";
+    document.body.style.userSelect = '';
 }
 
 function handleMouseUp() {
-  this.isDown = false;
-  this.style.cursor = "grab";
-  document.body.style.userSelect = '';
+    this.isDown = false;
+    this.style.cursor = "grab";
+    document.body.style.userSelect = '';
 }
 
 function handleMouseMove(e) {
-  const container = this;
-  if (!container.isDown) return;
-  e.preventDefault();
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - container.startX) * -1.5;
-  container.scrollLeft = container.scrollLeftStart + walk;
+    const container = this;
+    if (!container.isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - container.startX) * -1.5;
+    container.scrollLeft = container.scrollLeftStart + walk;
 }
 
 // Arrow Click Handlers
 function handleLeftClick() {
-  const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
-  if (container) container.scrollBy({ left: -700, behavior: 'smooth' });
+    const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
+    if (container) container.scrollBy({ left: -700, behavior: 'smooth' });
 }
 
 function handleRightClick() {
-  const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
-  if (container) container.scrollBy({ left: 700, behavior: 'smooth' });
+    const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
+    if (container) container.scrollBy({ left: 700, behavior: 'smooth' });
 }
 
 // Run on page load
@@ -238,4 +242,4 @@ updateProductWrapperBehavior();
 // Re-run when window resizes
 window.addEventListener('resize', updateProductWrapperBehavior);
 
-
+window.onload = init();
