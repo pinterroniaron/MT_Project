@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,8 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
+
     <title>Webshop</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -29,66 +33,52 @@
             </ul>
         </nav>
     </header>
-    
+
     <!-- bemutatkozas -->
     <section>
         <div>
             <h1>Üdvözöljök Önt a MAK webáruház oldalain!</h1>
-            <p>Prémium minőségű, kifogástalan állapotú AKCIÓS termékek tömkelege. Fénysebességű házhozszállítás 1-2 hét. Garancia természetesen nincs. </p>
+            <p>
+                Prémium minőségű, kifogástalan állapotú AKCIÓS termékek tömkelege.
+                Fénysebességű házhozszállítás 1-2 hét. Garancia természetesen nincs.
+            </p>
         </div>
     </section>
 
     <!-- trending -->
     <section>
-        
-            <h1>Trending termékek</h1>
-            <p>Itt találhatóak a legújabb és legnépszerűbb termékeink. Ne hagyja ki a lehetőséget!</p>
-            <div class="product-wrapper">
-                <div class="vertical-scroll">
-                <div class="card-container">
-                
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                </div>
-                        </div>
-                        <div class="arrows">
-                <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button> 
-                        </div>
+        <h1>Trending termékek</h1>
+        <p>
+            Itt találhatóak a legújabb és legnépszerűbb termékeink. Ne hagyja ki a
+            lehetőséget!
+        </p>
+        <div class="product-wrapper">
+            <div class="vertical-scroll">
+                <div class="card-container" id="trendingProductContainer"></div>
             </div>
+            <div class="arrows">
+                <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button>
+            </div>
+        </div>
     </section>
-    
+
     <!-- sales -->
     <section>
         <div>
             <h1>Akciós termékek</h1>
-            <p>Itt találhatóak a piacon a legjobb áron elérhető termékeink. Csak most, csak Önnek!</p>
+            <p>
+                Itt találhatóak a piacon a legjobb áron elérhető termékeink. Csak
+                most, csak Önnek!
+            </p>
             <div class="product-wrapper">
                 <div class="vertical-scroll">
-                <div class="card-container">
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
-                    <div class="card"><p class="product-name">Name</p><img src="" alt="" class="product-img" draggable="false"><p class="product-price">Price</p></div>
+                    <div class="card-container" id="saleProductContainer"></div>
                 </div>
-                        </div>
-                        <div class="arrows">
-                <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button> 
-                        </div>
+                <div class="arrows">
+                    <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button>
+                </div>
             </div>
-    </div>
+        </div>
     </section>
 
     <footer>
@@ -100,4 +90,5 @@
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
