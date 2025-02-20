@@ -27,7 +27,8 @@ body {
 	line-height: 1;
 	background-color: rgb(44, 44, 44);
 	color: white;
-	overflow-x: hidden	;
+	overflow-x: hidden;
+	font-family: 'Caveat', cursive !important;
 }
 ol, ul {
 	list-style: none;
@@ -44,8 +45,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
 
 
 
@@ -100,6 +99,10 @@ footer{
     padding: 10px;
     bottom: 0;
     width: 100%;
+}
+
+li {
+	font-size: larger !important;
 }
 
 .card-container {
@@ -190,11 +193,14 @@ footer{
 		display: unset;
 	  }
 
+	.arrows button{
+		display: none;
+	}
 }
 
 .arrows{
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 }
 
 .arrows button {
@@ -202,6 +208,7 @@ footer{
 	color: white;
 	font-size: x-large;
 	cursor: pointer;
+	margin: 0 20px 0 20px;
 }
 
 .product-wrapper {
