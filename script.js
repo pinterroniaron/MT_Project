@@ -25,7 +25,7 @@ function renderProducts() {
     if(document.getElementById('productContainer')){
         filteredProducts.forEach(element => {
             productHtml += `
-        <div class="card ${element.category}">
+        <div class="card ${element.category}" onclick="onClickProduct()">
             <p class="product-name">${element.title}</p>
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
             <p class="product-price">${element.price * 400} Ft</p>
@@ -36,7 +36,6 @@ function renderProducts() {
 
         });
     };
-    console.log(document.getElementById('productContainer'));
 productHtml = '';
 
 
@@ -44,10 +43,10 @@ productHtml = '';
 if(document.getElementById('trendingProductContainer')){
     trendingProducts.forEach(element => {
         productHtml += `
-        <div class="card ${element.category}">
-            <p class="product-name">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-            <p class="product-price">${element.price * 400} Ft</p>
+        <div class="card ${element.category}"  onclick="onClickProduct(this.id)">
+              <p class="product-name">${element.title}</p>
+              <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+              <p class="product-price">${element.price * 400} Ft</p>
         </div>
         `;
         
@@ -61,7 +60,7 @@ productHtml = '';
 if(document.getElementById('saleProductContainer')){
     saleProducts.forEach(element => {
         productHtml += `
-        <div class="card ${element.category}">
+        <div class="card ${element.category}" id=${element.id} onclick="onClickProduct(this.id)">
             <p class="product-name">${element.title}</p>
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
             <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
@@ -72,6 +71,11 @@ if(document.getElementById('saleProductContainer')){
     });
 };
 };
+
+function onClickProduct(id) {
+  console.log(id);
+  window.location.href = 'product.html';
+}
 
 function onChangeCategory(value) {
     console.log(value);
