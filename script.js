@@ -120,61 +120,132 @@ categoryOptions.forEach(element => {
 //   cardContainer.scrollLeft += (event.deltaY * 8);
 // });
 
-const cardContainer = document.querySelectorAll('.vertical-scroll')
-cardContainer.forEach(scroll => {
-  
-  scroll.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    scroll.scrollLeft += (event.deltaY * 8);
+const cardContainer = document.querySelectorAll('.vertical-scroll');
+
+function handleScroll(event) {
+  event.preventDefault();
+  this.scrollLeft += event.deltaY * 8;
+}
+
+function updateScrollBehavior() {
+  if (window.innerWidth >= 1200) {
+    // Enable scroll effect
+    cardContainer.forEach(scroll => {
+      if (!scroll.hasAttribute('data-scroll-enabled')) {
+        scroll.addEventListener('wheel', handleScroll);
+        scroll.setAttribute('data-scroll-enabled', 'true'); // Mark as enabled
+      }
+    });
+  } else {
+    // Disable scroll effect
+    cardContainer.forEach(scroll => {
+      scroll.removeEventListener('wheel', handleScroll);
+      scroll.removeAttribute('data-scroll-enabled'); // Remove marker
+    });
+  }
+}
+
+// Run on load
+updateScrollBehavior();
+
+// Re-run when the window resizes
+window.addEventListener('resize', updateScrollBehavior);
+
+
+
+
+function updateProductWrapperBehavior() {
+  document.querySelectorAll('.product-wrapper').forEach(wrapper => {
+    const container = wrapper.querySelector('.vertical-scroll');
+    const leftArrow = wrapper.querySelector('.left-arrow');
+    const rightArrow = wrapper.querySelector('.right-arrow');
+
+    if (!container || !leftArrow || !rightArrow) return; // Prevent errors
+
+    if (window.innerWidth < 1200) {
+      // Disable custom scrolling behavior, enable default scrolling
+      container.style.overflowX = 'auto';
+      container.style.cursor = 'default';
+
+      // Remove event listeners for dragging
+      container.removeEventListener('mousedown', handleMouseDown);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('mousemove', handleMouseMove);
+
+      // Remove event listeners for arrows
+      leftArrow.removeEventListener('click', handleLeftClick);
+      rightArrow.removeEventListener('click', handleRightClick);
+
+      // Remove attribute tracking events
+      container.removeAttribute('data-events-added');
+      
+    } else {
+      // Enable custom scrolling behavior
+      container.style.overflowX = 'hidden'; // Hide native scrollbar
+      container.style.cursor = 'grab';
+
+      // Ensure event listeners are only added once
+      if (!container.hasAttribute('data-events-added')) {
+        container.addEventListener('mousedown', handleMouseDown);
+        container.addEventListener('mouseleave', handleMouseLeave);
+        container.addEventListener('mouseup', handleMouseUp);
+        container.addEventListener('mousemove', handleMouseMove);
+
+        leftArrow.addEventListener('click', handleLeftClick);
+        rightArrow.addEventListener('click', handleRightClick);
+
+        container.setAttribute('data-events-added', 'true'); // Mark as initialized
+      }
+    }
   });
+}
 
-});;
+// Mouse Drag Handlers
+function handleMouseDown(e) {
+  const container = this;
+  container.isDown = true;
+  container.startX = e.pageX - container.offsetLeft;
+  container.scrollLeftStart = container.scrollLeft;
+  container.style.cursor = "grabbing";
+  document.body.style.userSelect = 'none';
+}
 
+function handleMouseLeave() {
+  this.isDown = false;
+  this.style.cursor = "grab";
+  document.body.style.userSelect = '';
+}
 
-document.querySelectorAll('.product-wrapper').forEach(wrapper => {
-  const container = wrapper.querySelector('.vertical-scroll');
-  const leftArrow = wrapper.querySelector('.left-arrow');
-  const rightArrow = wrapper.querySelector('.right-arrow');
+function handleMouseUp() {
+  this.isDown = false;
+  this.style.cursor = "grab";
+  document.body.style.userSelect = '';
+}
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+function handleMouseMove(e) {
+  const container = this;
+  if (!container.isDown) return;
+  e.preventDefault();
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - container.startX) * -1.5;
+  container.scrollLeft = container.scrollLeftStart + walk;
+}
 
-  // Mouse Drag Scrolling
-  container.addEventListener('mousedown', (e) => {
-      isDown = true;
-      startX = e.pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
-      container.style.cursor = "grabbing";
-      document.body.style.userSelect = 'none'; // Prevents text selection
-  });
+// Arrow Click Handlers
+function handleLeftClick() {
+  const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
+  if (container) container.scrollBy({ left: -700, behavior: 'smooth' });
+}
 
-  container.addEventListener('mouseleave', () => {
-      isDown = false;
-      container.style.cursor = "grab";
-      document.body.style.userSelect = ''; // Re-enable selection
-  });
+function handleRightClick() {
+  const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
+  if (container) container.scrollBy({ left: 700, behavior: 'smooth' });
+}
 
-  container.addEventListener('mouseup', () => {
-      isDown = false;
-      container.style.cursor = "grab";
-      document.body.style.userSelect = ''; // Re-enable selection
-  });
+// Run on page load
+updateProductWrapperBehavior();
 
-  container.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * -1.5; // Adjust speed for better feel
-      container.scrollLeft = scrollLeft + walk;
-  });
+// Re-run when window resizes
+window.addEventListener('resize', updateProductWrapperBehavior);
 
-  // Arrow Button Scrolling
-  leftArrow.addEventListener('click', () => {
-      container.scrollBy({ left: -700, behavior: 'smooth' });
-  });
-
-  rightArrow.addEventListener('click', () => {
-      container.scrollBy({ left: 700, behavior: 'smooth' });
-  });
-});
