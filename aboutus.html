@@ -27,160 +27,26 @@
         </nav>
     </header>
 
-    <!-- <div class="gallery">
-        <img src="images/about/Roni.jpeg" alt="Roni" onclick="showDetails(0)">
-        <img src="images/about/Máté.jpeg" alt="Máté" onclick="showDetails(1)">
-        <img src="images/about/Giba.jpeg" alt="Gabi" onclick="showDetails(2)">
-    </div> -->
-    <!-- <div id="details" class="details, about-card">
-        <img id="details-img" class="pics" src="" alt="">
-        <p id="details-text"></p>
-    </div> -->
-
-    <!-- Script részleg -->
-    <!-- <script>
-        const images = [
-            { src: "images/about/Roni.jpeg", text: "TBC 1" },
-            { src: "images/about/Máté.jpeg", text: "TBC 2" },
-            { src: "images/about/Giba.jpeg", text: "TBC 3" }
-        ];
-        
-        function showDetails(index) {
-            const details = document.getElementById("details");
-            const detailsImg = document.getElementById("details-img");
-            const detailsText = document.getElementById("details-text");
-            
-            detailsImg.src = images[index].src;
-            detailsText.textContent = images[index].text;
-            
-            details.style.display = "flex";
-            details.style.backgroundColor = "rgb(127, 127, 127)";
-            details.style.boxShadow = "0 4px 8px 0 rgb(4, 3, 3)";
-            details.style.flexDirection = "row";
-            details.style.marginLeft = "20px";
-            details.style.marginTop = "10px";
-            detailsText.style.marginLeft = "10px";
-            detailsText.style.display = "flex";
-            detailsText.style.alignItems = "center";
-            
-        }
-
-        // Default
-        showDetails(0);
-    </script> -->
-
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .gallery {
-            display: flex;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .gallery img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            transition: transform 0.3s ease-in-out;
-            border-radius: 5px;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        .dropdown {
-            width: 500px;
-            max-width: 90%;
-            background: white;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.5s ease-in-out, opacity 0.3s;
-            opacity: 0;
-        }
-
-        .dropdown.open {
-            max-height: 300px;
-            opacity: 1;
-        }
-
-        .dropdown img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .description {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .dropdown.open .description {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
-
-
-    <div class="gallery">
-        <img src="images/about/Giba.jpeg" alt="Image 1" onclick="showImage(0)">
-        <img src="images/about/Máté.jpeg" alt="Image 2" onclick="showImage(1)">
-        <img src="images/about/Roni.jpeg" alt="Image 3" onclick="showImage(2)">
+    
+    
+    <div class="container">
+        <div class="image-container" onmouseover="showDescription(0)" onmouseout="hideDescription(0)">
+            <img src="images/about/Giba.jpeg" alt="Kép 1">
+            <div class="description">asdasdasd a da dsa sda sd asdasdasdasdas asdasdasdasd asdasdasdasd asdasdas asdasdasda asdasdasdas asdasd asd asdas dasdasd asdasdasdasd asdasdad asasdasdasda asdasdasdasdasdas asdasdasdasdasd asdasdasdasdasd asdasdasdasdasd asdasdasd asda sda sdasdasdas asdasdasdasd asdassdasdasd</div>
+        </div>
+        <div class="image-container" onmouseover="showDescription(1)" onmouseout="hideDescription(1)">
+            <img src="images/about/Máté.jpeg" alt="Kép 2">
+            <div class="description">asdad adad ad ad adsads adsasd ad a d a da da sda sdsd asdasdasdasd a sd asdasdasdasdasd  a sdasdasdasdasdasd    asdasdasdasd  asdadasd ad asda sdasdasdasdas a sdadasdasdasdas a sdasdasd a sdadasdas asdadasdas d</div>
+        </div>
+        <div class="image-container" onmouseover="showDescription(2)" onmouseout="hideDescription(2)">
+            <img src="images/about/Roni.jpeg" alt="Kép 3">
+            <div class="description">asd asdasdasdasd asdsadasdasd asd as dsda sdsdasdasdas dasdasdasd asdasdasd asdasdasdas dasdasdasda sdasd asdasd asdasd  a sdasdasdas asdasdasd asdadasd asdasdasd asdasdasd asdasdasd asdasdasd as das dasd asdasdasd asdasdasda sdasdasd asdasdasd asdasdasd asdasdasdas asdasdasd asdasdasdasda sa </div>
+        </div>
     </div>
-
-    <div class="dropdown" id="dropdown">
-        <img id="selectedImage" src="" alt="Selected">
-        <p class="description" id="imageDescription"></p>
-    </div>
-
-    <script>
-        const images = [
-            { src: "images/about/Giba.jpeg", text: "This is the first image." },
-            { src: "images/about/Máté.jpeg", text: "Here is the second image." },
-            { src: "images/about/Roni.jpeg", text: "Finally, the third image appears." }
-        ];
-
-        const dropdown = document.getElementById("dropdown");
-        const selectedImage = document.getElementById("selectedImage");
-        const imageDescription = document.getElementById("imageDescription");
-
-        function showImage(index) {
-            selectedImage.src = images[index].src;
-            imageDescription.textContent = images[index].text;
-
-            if (!dropdown.classList.contains("open")) {
-                dropdown.classList.add("open");
-            }
-        }
-
-        // Set the first image as default on page load
-        window.onload = () => showImage(0);
-    </script>
-
-
-
-
-
     
     <footer>
 
     </footer>
+    <script src="about.js"></script>
 </body>
 </html>
