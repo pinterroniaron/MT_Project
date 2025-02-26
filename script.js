@@ -17,8 +17,8 @@ function filterByCategory(category) {
 
 function renderProducts() {
     let productHtml = '';
-    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
-    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
+    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
 
 
     // All Products - Filtered Products
