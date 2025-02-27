@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
 
     <title>Webshop</title>
 </head>
@@ -28,23 +28,10 @@
             </ul>
         </nav>
     </header>
+    <h1>Products</h1>
     <section>
         <!-- fuzzy searchbar -->
     </section>
-
-    <section>
-        <div>
-            <div class="product-wrapper">
-                <div class="vertical-scroll">
-                    <div class="card-container" id="productContainer"></div>
-                </div>
-                <div class="arrows"></div>
-                <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button>
-            </div>
-        </div>
-        </div>
-    </section>
-    <p></p>
     <section>
         <select title="categoryList" onchange="onChangeCategory(this.value)">
             <option class="categoryOptions" value="all">All</option>
@@ -54,6 +41,19 @@
             <option class="categoryOptions" value="women's clothing">women's clothing</option>
         </select>
     </section>
+
+    <section>
+        <div>
+            <div class="product-wrapper">
+                
+                    <div class="card-container" id="productContainer"></div>
+                
+            </div>
+        </div>
+        </div>
+    </section>
+    <p></p>
+    
     <footer>
         <div>
             <p>MAK webáruház</p>

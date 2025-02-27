@@ -104,7 +104,7 @@ section {
 
 body {
 	line-height: 1;
-	background-color: rgb(36, 36, 36);
+	background-color: rgb(44, 44, 44);
 	color: white;
 	overflow-x: hidden;
 	font-family: 'Caveat', cursive !important;
@@ -197,12 +197,18 @@ li {
 }
 
 .card-container {
-	display: flex;
-	justify-content: space-evenly;
+
+	/* justify-content: space-evenly; */
 	white-space: nowrap;
-	width: 100%;
-	height: 50vh;
+	/* width: 100%; */
+	/* height: 50vh; */
 	margin-bottom: 20px;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	height: auto;
+	gap: 30px;
+	justify-items: center;
+	width: auto;
 
 }
 
@@ -269,30 +275,6 @@ li {
 	margin-top: auto;
 }
 
-
-@media screen and (max-width: 1200px) {
-	.card-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		height: auto;
-		gap: 30px;
-		justify-items: center;
-		width: auto;
-	}
-
-	.vertical-scroll {
-		overflow: hidden;
-	}
-
-	.vertical-scroll::-webkit-scrollbar {
-		display: unset;
-	}
-
-	.arrows button{
-		display: none;
-	}
-}
-
 .arrows {
 	display: flex;
 	justify-content: center;
@@ -307,45 +289,5 @@ li {
 }
 
 .product-wrapper {
-	background-color: rgba(0, 0, 0, 0.486);
 	padding: 20px;
 }
-
-/* body {
-	font-family: Arial;
-  } */
-  
-  * {
-	box-sizing: border-box;
-  }
-  
-  form.example input[type=text] {
-	padding: 10px;
-	font-size: 17px;
-	border: 1px solid grey;
-	float: left;
-	width: 80%;
-	background: #f1f1f1;
-  }
-  
-  form.example button {
-	float: left;
-	width: 20%;
-	padding: 10px;
-	background: #2196F3;
-	color: white;
-	font-size: 17px;
-	border: 1px solid grey;
-	border-left: none;
-	cursor: pointer;
-  }
-  
-  form.example button:hover {
-	background: #0b7dda;
-  }
-  
-  form.example::after {
-	content: "";
-	clear: both;
-	display: table;
-  }

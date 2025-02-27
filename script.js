@@ -19,8 +19,9 @@ function filterByCategory(category) {
 
 function renderProducts() {
     let productHtml = '';
-    
-   
+    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+
 
     // All Products - Filtered Products
     if (document.getElementById('productContainer')) {
@@ -224,46 +225,46 @@ function updateProductWrapperBehavior() {
 
         if (!container || !leftArrow || !rightArrow) return; // Prevent errors
 
-        if (window.innerWidth < 1200) {
-            // ✅ Disable custom scrolling behavior, enable default scrolling
-            container.style.overflowX = 'auto';
-            container.style.cursor = 'default';
+    if (window.innerWidth < 1200) {
+      //  Disable custom scrolling behavior, enable default scrolling
+      container.style.overflowX = 'auto';
+      container.style.cursor = 'default';
 
-            // ✅ Remove event listeners for dragging
-            container.removeEventListener('mousedown', handleMouseDown);
-            container.removeEventListener('mouseleave', handleMouseLeave);
-            container.removeEventListener('mouseup', handleMouseUp);
-            container.removeEventListener('mousemove', handleMouseMove);
+      //  Remove event listeners for dragging
+      container.removeEventListener('mousedown', handleMouseDown);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('mousemove', handleMouseMove);
 
-            // ✅ Remove event listeners for arrows
-            leftArrow.removeEventListener('click', handleLeftClick);
-            rightArrow.removeEventListener('click', handleRightClick);
+      //  Remove event listeners for arrows
+      leftArrow.removeEventListener('click', handleLeftClick);
+      rightArrow.removeEventListener('click', handleRightClick);
 
-            // ✅ Remove attribute tracking events
-            container.removeAttribute('data-events-added');
+      //  Remove attribute tracking events
+      container.removeAttribute('data-events-added');
+      
+    } else {
+      //  Enable custom scrolling behavior
+      container.style.overflowX = 'hidden'; // Hide native scrollbar
+      container.style.cursor = 'grab';
 
-        } else {
-            // ✅ Enable custom scrolling behavior
-            container.style.overflowX = 'hidden'; // Hide native scrollbar
-            container.style.cursor = 'grab';
-
-            // ✅ Ensure event listeners are only added once
-            if (!container.hasAttribute('data-events-added')) {
-                container.addEventListener('mousedown', handleMouseDown);
-                container.addEventListener('mouseleave', handleMouseLeave);
-                container.addEventListener('mouseup', handleMouseUp);
-                container.addEventListener('mousemove', handleMouseMove);
+      //  Ensure event listeners are only added once
+      if (!container.hasAttribute('data-events-added')) {
+        container.addEventListener('mousedown', handleMouseDown);
+        container.addEventListener('mouseleave', handleMouseLeave);
+        container.addEventListener('mouseup', handleMouseUp);
+        container.addEventListener('mousemove', handleMouseMove);
 
                 leftArrow.addEventListener('click', handleLeftClick);
                 rightArrow.addEventListener('click', handleRightClick);
 
-                container.setAttribute('data-events-added', 'true'); // Mark as initialized
-            }
-        }
-    });
+        container.setAttribute('data-events-added', 'true'); // Mark as initialized
+      }
+    }
+  });
 }
 
-// 🖱 Mouse Drag Handlers
+//  Mouse Drag Handlers
 function handleMouseDown(e) {
     const container = this;
     container.isDown = true;
@@ -294,7 +295,7 @@ function handleMouseMove(e) {
     container.scrollLeft = container.scrollLeftStart + walk;
 }
 
-// 🔼🔽 Arrow Click Handlers
+//  Arrow Click Handlers
 function handleLeftClick() {
     const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
     if (container) container.scrollBy({ left: -700, behavior: 'smooth' });
@@ -305,10 +306,10 @@ function handleRightClick() {
     if (container) container.scrollBy({ left: 700, behavior: 'smooth' });
 }
 
-// ✅ Run on page load
+//  Run on page load
 updateProductWrapperBehavior();
 
-// ✅ Re-run when window resizes
+//  Re-run when window resizes
 window.addEventListener('resize', updateProductWrapperBehavior);
 
 
