@@ -89,7 +89,8 @@ function renderProducts() {
     if (document.getElementById('productPage')) {
         
         productHtml = `
-        <div class="product-container">
+        
+        <div class="product-container" id="${product.id}">
             <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false">
             <div class="product-details">
                 <p class="product-name">${product.title}</p>
@@ -98,12 +99,17 @@ function renderProducts() {
                 <button class="add-to-cart">Add to Cart</button>
             </div>
         </div>
+        
         `;
 
         document.getElementById('productPage').innerHTML = productHtml;
     };
 
 };
+function navigateToProduct(productId) {
+    window.location.href = `product.html?id=${productId}`;
+}
+
 
 
 
@@ -113,9 +119,7 @@ function onClickProduct(id) {
     
     getProductById(id);
     
-    //window.location.href = 'product.html';
-  
-    console.log(product);
+    window.location.href = `product.html?id=${id}`;
     
 }
        
