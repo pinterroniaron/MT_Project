@@ -16,16 +16,6 @@ function filterByCategory(category) {
 
 }
 
-function getProductById(id) {
-    for (let i = 0; i < products.length; i++) {
-        if (products[i].id == id) {
-            product = products[i];
-        };
-        
-    };
-   
-};
-console.log(product);
 
 function renderProducts() {
     let productHtml = '';
@@ -110,7 +100,15 @@ function navigateToProduct(productId) {
     window.location.href = `product.html?id=${productId}`;
 }
 
-
+function getProductById(id) {
+  for (let i = 0; i < products.length; i++) {
+      if (products[i].id == id) {
+          product = products[i];
+      };
+      
+  };
+ 
+};
 
 
  
