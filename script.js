@@ -1,30 +1,31 @@
 const products = [];
 let filteredProducts = [];
+let fuzzyProducts = [];
 
 function filterByCategory(category) {
-    if (category) {
-        filteredProducts = products.filter(element => element.category === category);
-        if (category === 'all') {
-            filteredProducts = products;
-        }
+  if (category) {
+    filteredProducts = products.filter(element => element.category === category);
+    if (category === 'all') {
+      filteredProducts = products;
     }
-    else {
-        filteredProducts = products;
-    }
-    console.log(filteredProducts);
+  }
+  else {
+    filteredProducts = products;
+  }
+  console.log(filteredProducts);
 
 }
 
 function renderProducts() {
-    let productHtml = '';
-    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
-    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+  let productHtml = '';
+  const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+  const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
 
 
-    // All Products - Filtered Products
-    if(document.getElementById('productContainer')){
-        filteredProducts.forEach(element => {
-            productHtml += `
+  // All Products - Filtered Products
+  if (document.getElementById('productContainer')) {
+    filteredProducts.forEach(element => {
+      productHtml += `
         <div class="card ${element.category}">
             <p class="product-name">${element.title}</p>
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
@@ -32,81 +33,81 @@ function renderProducts() {
         </div>
         `;
 
-            document.getElementById('productContainer').innerHTML = productHtml;
+      document.getElementById('productContainer').innerHTML = productHtml;
 
-        });
-    };
-    console.log(document.getElementById('productContainer'));
-productHtml = '';
-
-
-// Trending Products
-if(document.getElementById('trendingProductContainer')){
-    trendingProducts.forEach(element => {
-        productHtml += `
-        <div class="card ${element.category}">
-            <p class="product-name">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-            <p class="product-price">${element.price * 400} Ft</p>
-        </div>
-        `;
-        
-            document.getElementById('trendingProductContainer').innerHTML = productHtml;
     });
-};
-productHtml = '';
+  };
+  
+  productHtml = '';
 
 
-// Sale Products
-if(document.getElementById('saleProductContainer')){
+  // Trending Products
+  if (document.getElementById('trendingProductContainer')) {
+    trendingProducts.forEach(element => {
+      productHtml += `
+        <div class="card ${element.category}">
+            <p class="product-name">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+            <p class="product-price">${element.price * 400} Ft</p>
+        </div>
+        `;
+
+      document.getElementById('trendingProductContainer').innerHTML = productHtml;
+    });
+  };
+  productHtml = '';
+
+
+  // Sale Products
+  if (document.getElementById('saleProductContainer')) {
     saleProducts.forEach(element => {
-        productHtml += `
+      productHtml += `
         <div class="card ${element.category}">
             <p class="product-name">${element.title}</p>
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
             <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
         </div>
         `;
-        
-            document.getElementById('saleProductContainer').innerHTML = productHtml;
+
+      document.getElementById('saleProductContainer').innerHTML = productHtml;
     });
-};
+  };
 };
 
 function onChangeCategory(value) {
-    console.log(value);
+  console.log(value);
 
-    filterByCategory(value);
-    renderProducts();
+  filterByCategory(value);
+  renderProducts();
 }
 
 function init() {
-    fetchProducts();
+  fetchProducts();
 }
 
 function fetchProducts() {
-    const url = 'https://fakestoreapi.com/products';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-    try {
-        const response = fetch(url, options).then((res => {
-            const result = res.json().then((data) => {
-                console.log(data);
-                data.forEach(element => {
-                    products.push(element);
-                });
-                filterByCategory();
-                renderProducts();
-            })
-        }));
-    }
-    catch (error) {
-        console.error(error);
-    }
+  const url = 'https://fakestoreapi.com/products';
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const response = fetch(url, options).then((res => {
+      const result = res.json().then((data) => {
+        console.log(data);
+        data.forEach(element => {
+          products.push(element);
+        });
+        filterByCategory();
+        renderProducts();
+      })
+    }));
+  }
+  catch (error) {
+    console.error(error);
+  }
 }
 
 
@@ -172,7 +173,7 @@ function updateProductWrapperBehavior() {
 
       //  Remove attribute tracking events
       container.removeAttribute('data-events-added');
-      
+
     } else {
       //  Enable custom scrolling behavior
       container.style.overflowX = 'hidden'; // Hide native scrollbar
@@ -245,32 +246,32 @@ window.addEventListener('resize', updateProductWrapperBehavior);
 
 
 
-function renderProducts2(filteredProducts) {
+function renderProducts2() {
   let productHtml = '';
-  filteredProducts.forEach(element => {
+  fuzzyProducts.forEach(element => {
     productHtml += `
-<div class="card ${element.category}">
-    <p class="product-name">${element.title}</p>
-    <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
-    <p class="product-price">${element.price * 400} Ft</p>
-</div>
-`;
+    <div class="card ${element.category}">
+      <p class="product-name">${element.title}</p>
+      <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+      <p class="product-price">${element.price * 400} Ft</p>
+    </div>
+    `;
 
     document.getElementById('productContainer').innerHTML = productHtml;
 
-});
+  });
 
 }
 
 function fuzzySearch() {
 
   let searchValue = document.getElementById('fuzzySearchInput').value.toLowerCase();
-  let filteredProducts = products.filter(element => element.title.toLowerCase().includes(searchValue));
-  if (filteredProducts.length === 0) {
-      filteredProducts = [{ title: 'Nincs találat' }];
+  console.log(searchValue);
+  fuzzyProducts = products.filter(element => element.title.toLowerCase().includes(searchValue));
+  if (fuzzyProducts.length === 0) {
+    fuzzyProducts = [{ title: 'Nincs találat' }];
   }
-  renderProducts2(filteredProducts);
-  
+  renderProducts2();
 }
 
 window.onload = init();
