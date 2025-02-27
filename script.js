@@ -243,4 +243,34 @@ updateProductWrapperBehavior();
 window.addEventListener('resize', updateProductWrapperBehavior);
 
 
+
+
+function renderProducts2(filteredProducts) {
+  let productHtml = '';
+  filteredProducts.forEach(element => {
+    productHtml += `
+<div class="card ${element.category}">
+    <p class="product-name">${element.title}</p>
+    <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+    <p class="product-price">${element.price * 400} Ft</p>
+</div>
+`;
+
+    document.getElementById('productContainer').innerHTML = productHtml;
+
+});
+
+}
+
+function fuzzySearch() {
+
+  let searchValue = document.getElementById('fuzzySearchInput').value.toLowerCase();
+  let filteredProducts = products.filter(element => element.title.toLowerCase().includes(searchValue));
+  if (filteredProducts.length === 0) {
+      filteredProducts = [{ title: 'Nincs találat' }];
+  }
+  renderProducts2(filteredProducts);
+  
+}
+
 window.onload = init();

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Webshop</title>
 </head>
@@ -29,8 +30,12 @@
         </nav>
     </header>
     <h1>Products</h1>
-    <section>
+    <section id="right">
         <!-- fuzzy searchbar -->
+        <form class="example search" action="" >
+            <input type="text" placeholder="Search.." name="search2" id="fuzzySearchInput">
+            <button type="submit" onclick="fuzzySearch()"><i class="fa fa-search"></i></button>
+          </form>
     </section>
     <section>
         <select title="categoryList" onchange="onChangeCategory(this.value)">
