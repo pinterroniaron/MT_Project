@@ -27,12 +27,23 @@ function renderProducts() {
     if (document.getElementById('productContainer')) {
         filteredProducts.forEach(element => {
             productHtml += `
-        <div class="card ${element.category}" id=${element.id} onclick="onClickProduct(this.id)" >
-            <p class="product-name">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+        <div class="card ${element.category}" id=${element.id}>
+            <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
             <p class="product-price">${element.price * 400} Ft</p>
-        </div>
         `;
+        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+            productHtml += 
+            `
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            `
+        }
+        else {
+            productHtml += 
+            `
+            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            `
+        }
 
             document.getElementById('productContainer').innerHTML = productHtml;
 
@@ -46,16 +57,32 @@ function renderProducts() {
         const trendingProducts = filteredProducts.sort(() => Math.floor(Math.random(0,filteredProducts.length))).slice(0, 7);
         trendingProducts.forEach(element => {
             productHtml += `
-        <div class="card ${element.category}" id=${element.id} onclick="onClickProduct(this.id)">
-              <p class="product-name">${element.title}</p>
-              <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+        <div class="card ${element.category}" id=${element.id}>
+              <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
+              <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
               <p class="product-price">${element.price * 400} Ft</p>
-        </div>
+              
+        
         `;
+        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+            productHtml += 
+            `
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            `
+        }
+        else {
+            productHtml += 
+            `
+            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            `
+        }
 
             document.getElementById('trendingProductContainer').innerHTML = productHtml;
         });
     };
+
+    
+      
     productHtml = '';
 
 
@@ -64,12 +91,23 @@ function renderProducts() {
         const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
         saleProducts.forEach(element => {
             productHtml += `
-        <div class="card ${element.category}" id=${element.id} onclick="onClickProduct(this.id)">
-            <p class="product-name">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+        <div class="card ${element.category}" id=${element.id}>
+            <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
             <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
-        </div>
         `;
+        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+            productHtml += 
+            `
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            `
+        }
+        else {
+            productHtml += 
+            `
+            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            `
+        }
 
             document.getElementById('saleProductContainer').innerHTML = productHtml;
         });
@@ -305,6 +343,26 @@ function handleRightClick() {
     const container = this.closest('.product-wrapper').querySelector('.vertical-scroll');
     if (container) container.scrollBy({ left: 700, behavior: 'smooth' });
 }
+function addToCart(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!cart.includes(productId)) {
+        cart.push(productId);
+        localStorage.setItem("cart", JSON.stringify(cart));
+  
+    }
+  }
+  function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let index = cart.indexOf(productId);
+    if (index !== -1) {
+        cart.splice(index, 1); 
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+}
+
+
+
 
 //  Run on page load
 updateProductWrapperBehavior();
