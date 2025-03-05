@@ -291,3 +291,22 @@ li {
 .product-wrapper {
 	padding: 20px;
 }
+.add-to-cart{
+	margin-top: auto;
+	background-color: rgb(82, 82, 82);
+	color: white;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: large;
+}
+
+.remove-from-cart{
+	margin-top: auto;
+	background-color: rgb(255, 0, 0);
+	color: white;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: large;
+}
