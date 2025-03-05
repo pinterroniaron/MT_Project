@@ -32,7 +32,7 @@ function renderProducts() {
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
             <p class="product-price">${element.price * 400} Ft</p>
         `;
-        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+        if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
             <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
@@ -64,7 +64,7 @@ function renderProducts() {
               
         
         `;
-        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+        if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
             <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
@@ -96,7 +96,7 @@ function renderProducts() {
             <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
             <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
         `;
-        if (JSON.parse(localStorage.getItem("cart").includes(element.id))){
+        if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
             <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
@@ -348,6 +348,7 @@ function addToCart(productId) {
     if (!cart.includes(productId)) {
         cart.push(productId);
         localStorage.setItem("cart", JSON.stringify(cart));
+        renderProducts()
   
     }
   }
@@ -358,6 +359,8 @@ function addToCart(productId) {
     if (index !== -1) {
         cart.splice(index, 1); 
         localStorage.setItem("cart", JSON.stringify(cart));
+        renderProducts()
+        
     }
 }
 

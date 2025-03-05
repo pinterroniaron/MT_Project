@@ -31,7 +31,7 @@ function renderProducts() {
             <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false">
             <p class="product-price">${product.price * 400} Ft</p>
         `;
-        if (JSON.parse(localStorage.getItem("cart").includes(product.id))){
+        if (JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id)){
             productHtml += 
             `
             <button class="remove-from-cart" onclick="removeFromCart(${product.id})">Remove from Cart</button></div>
@@ -111,7 +111,7 @@ function addToCart(productId) {
     if (!cart.includes(productId)) {
         cart.push(productId);
         localStorage.setItem("cart", JSON.stringify(cart));
-  
+        renderProducts()
     }
   }
   function removeFromCart(productId) {
@@ -121,6 +121,7 @@ function addToCart(productId) {
     if (index !== -1) {
         cart.splice(index, 1); 
         localStorage.setItem("cart", JSON.stringify(cart));
+        renderProducts()
     }
 }
 
