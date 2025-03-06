@@ -15,4 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
         dropdownContent.classList.remove("active");
         event.stopPropagation(); 
     })
+    document.addEventListener("click", function(event) {
+        if (!menuButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.classList.remove("active");
+        }
+    });
 });
