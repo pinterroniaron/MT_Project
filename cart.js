@@ -26,9 +26,9 @@ function renderProducts() {
             let product = products.find(product => product.id == cartId);
             if (product) {
                 productHtml += `
-        <div class="card ${product.category}" id=${product.id} onclick="onClickProduct(this.id)" >
-            <p class="product-name">${product.title}</p>
-            <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false">
+        <div class="card ${product.category}" id=${product.id}>
+            <p class="product-name" onclick="onClickProduct(${product.id})">${product.title}</p>
+            <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false" onclick="onClickProduct(${product.id})">
             <p class="product-price">${product.price * 400} Ft</p>
         `;
         if (JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id)){

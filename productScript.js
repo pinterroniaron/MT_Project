@@ -17,12 +17,23 @@
                         <p class="product-name">${product.title}</p>
                         <p class="product-price">${product.price * 400} Ft</p>
                         <p class="product-description">${product.description}</p>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
             
             `;
+
+            if (JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id)){
+                productHtml += 
+                `
+                <button class="remove-from-cart" onclick="removeFromCart(${product.id})">Remove from Cart</button></div></div>
+                `
             }
+            else {
+                productHtml += 
+                `
+                <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button></div></div>
+                `
+            }
+            };
+            
     
             document.getElementById('productPage').innerHTML = productHtml;
         };
@@ -55,6 +66,26 @@
             }
             catch (error) {
                 console.error(error);
+            }
+        }
+        function addToCart(productId) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (!cart.includes(productId)) {
+                cart.push(productId);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderProducts()
+          
+            }
+          }
+          function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+            let index = cart.indexOf(productId);
+            if (index !== -1) {
+                cart.splice(index, 1); 
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderProducts()
+                
             }
         }
         
