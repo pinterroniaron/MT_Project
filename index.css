@@ -427,25 +427,30 @@ li {
   }
 
   .marquee {
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%;
-    position: relative;
+	padding-block: 8px;
+	border-block: 1px solid black;
+	overflow: hidden;
+	user-select: none;
+	justify-content: space-around;
+	display: flex;
+	width: 100%;
   }
-  
-  .marquee p {
-    display: inline-block;
-    padding-right: 50px; /* Space between repeated text */
-    min-width: 100%;
-    animation: marquee 35s linear infinite;
+
+  .marquee-content {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	align-items: center;
+	animation: scroll 20s linear infinite;
+	width: 100%;
   }
-  
-  @keyframes marquee {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(100%);
-    }
+  /* .marquee-content:hover {
+	animation-play-state: paused;
+  } */
+
+  @keyframes scroll {
+	to {
+		transform: translateX(-100%);
+	}
   }

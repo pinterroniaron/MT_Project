@@ -361,13 +361,5 @@ updateProductWrapperBehavior();
 //  Re-run when window resizes
 window.addEventListener('resize', updateProductWrapperBehavior);
 
-document.addEventListener("DOMContentLoaded", function () {
-    const marquee = document.querySelector(".marquee-content");
-    const text = marquee.innerHTML;
-  
-    // Duplicate the text for a seamless loop
-    marquee.innerHTML = text + text;
-  });
-
 
 window.onload = init();
