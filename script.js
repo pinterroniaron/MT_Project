@@ -1,6 +1,8 @@
 const products = [];
 let filteredProducts = [];
 var product = {};
+const saleProducts = [];
+const trendingProducts = [];
 
 function filterByCategory(category) {
     if (category) {
@@ -16,11 +18,22 @@ function filterByCategory(category) {
 
 }
 
+function randomizeProducts() {
+    if (!localStorage.getItem('trendingProducts')) {
+        const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
+        localStorage.setItem('trendingProducts', JSON.stringify(trendingProducts));
+    }
+
+    if (!localStorage.getItem('saleProducts')) {
+        const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
+        localStorage.setItem('saleProducts', JSON.stringify(saleProducts));
+    }
+}
+   
 
 function renderProducts() {
     let productHtml = '';
-    const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
-    const trendingProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 8);
+    
 
 
     // All Products - Filtered Products
@@ -54,7 +67,7 @@ function renderProducts() {
 
     // Trending Products
     if (document.getElementById('trendingProductContainer')) {
-        const trendingProducts = filteredProducts.sort(() => Math.floor(Math.random(0,filteredProducts.length))).slice(0, 7);
+        const trendingProducts = JSON.parse(localStorage.getItem('trendingProducts'));
         trendingProducts.forEach(element => {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
@@ -88,7 +101,7 @@ function renderProducts() {
 
     // Sale Products
     if (document.getElementById('saleProductContainer')) {
-        const saleProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 7);
+        const saleProducts = JSON.parse(localStorage.getItem('saleProducts'));
         saleProducts.forEach(element => {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
@@ -150,17 +163,10 @@ function getProductById(id) {
 };
 
 
- 
-
-function onClickProduct(id) {
-    
-    getProductById(id);
-    
-    window.location.href = `product.html?id=${id}`;
-    
+function onClickProduct(id) {  
+    getProductById(id); 
+    window.location.href = `product.html?id=${id}`; 
 }
-       
-console.log(product);
 
 function onChangeCategory(value) {
     console.log(value);
@@ -189,6 +195,7 @@ function fetchProducts() {
                     products.push(element);
                 });
                 filterByCategory();
+                randomizeProducts();
                 renderProducts();
             })
         }));

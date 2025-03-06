@@ -47,29 +47,16 @@ function renderProducts() {
             document.getElementById('productContainer').innerHTML = productHtml;
             }
         })
-        
-        
     }
     else {
         productHtml = `<p>Your cart is empty.</p>`;
         document.getElementById('productContainer').innerHTML = productHtml;
     }
-
-            
-
-
-   
-
 };
 
-
-
-function onClickProduct(id) {
-    
+function onClickProduct(id) {  
     getProductById(id);
-    
-    window.location.href = `product.html?id=${id}`;
-    
+    window.location.href = `product.html?id=${id}`;  
 }
        
 console.log(product);
@@ -124,12 +111,6 @@ function addToCart(productId) {
         renderProducts()
     }
 }
-
-
-
-
-
-
 
 
 window.onload = init();
