@@ -62,7 +62,15 @@ function renderProducts() {
 
 };
 
-
+function getProductById(id) {
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].id == id) {
+            product = products[i];
+        };
+        
+    };
+   
+  };
 
 function onClickProduct(id) {
     
