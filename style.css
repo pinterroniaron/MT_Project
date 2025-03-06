@@ -190,6 +190,7 @@ footer {
 	padding: 10px;
 	bottom: 0;
 	width: 100%;
+	bottom: auto;
 }
 
 li {
@@ -244,11 +245,12 @@ li {
 	border-radius: 7%;
 	object-fit: cover;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .description {
 	font-size: large;
-
+	
 }
 
 .product-name {
@@ -263,12 +265,32 @@ li {
 	overflow: visible; /* Prevents breaking out of the card */
 	max-width: 100%; /* Prevents text from overflowing */
 	padding: 15px;
+	cursor: pointer;
 }
 
 .product-price {
 	margin-top: auto;
 }
 
+.add-to-cart{
+	margin-top: auto;
+	background-color: rgb(82, 82, 82);
+	color: white;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: large;
+}
+
+.remove-from-cart{
+	margin-top: auto;
+	background-color: rgb(255, 0, 0);
+	color: white;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: large;
+}
 
 @media screen and (max-width: 1200px) {
 	.card-container {

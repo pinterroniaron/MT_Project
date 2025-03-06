@@ -5,18 +5,17 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
 
     <title>Webshop</title>
 </head>
 
-<body class="">
+<body>
     <header>
         <div class="dropdown">
             <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></span>
@@ -73,98 +72,10 @@
             </ul>
         </nav>
     </header>
-
-    <!-- bemutatkozas -->
-    <section>
-        <div>
-            <div class="marquee">
-                <div class="marquee-content" aria-hidden="true">
-                    <span class="para">Prémium minőség</span>
-                    <span class="para">Kifogástalan állapotú</span>
-                    <span class="para">AKCIÓS termékek</span>
-                    <span class="para">Fénysebességű házhozszállítás</span>
-                    <span class="para">Garancia természetesen nincs</span>
-                </div>
-                <div class="marquee-content">
-                    <span class="para">Prémium minőség</span>
-                    <span class="para">Kifogástalan állapotú</span>
-                    <span class="para">AKCIÓS termékek</span>
-                    <span class="para">Fénysebességű házhozszállítás</span>
-                    <span class="para">Garancia természetesen nincs</span>
-                </div>
-            </div>
-            <h1>Üdvözöljök Önt a MAK webáruház oldalain!</h1>
-            
-        </div>
-    </section>
-    <!-- <section>carousel</section> -->
     
-    <!-- trending -->
-    <section>
-        <h2>Trending termékek</h2>
-        <p class="para2">
-            Itt találhatóak a legújabb és legnépszerűbb termékeink. Ne hagyja ki a
-            lehetőséget!
-        </p>
-        <div class="product-wrapper">
-            <div class="vertical-scroll">
-                <div class="card-container" id="trendingProductContainer"></div>
-            </div>
-            <div class="arrows">
-                <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button>
-            </div>
-        </div>
-        <div class="marquee">
-            <div class="marquee-content" aria-hidden="true">
-                <span class="para">Prémium minőség</span>
-                <span class="para">Kifogástalan állapotú</span>
-                <span class="para">AKCIÓS termékek</span>
-                <span class="para">Fénysebességű házhozszállítás</span>
-                <span class="para">Garancia természetesen nincs</span>
-            </div>
-            <div class="marquee-content">
-                <span class="para">Prémium minőség</span>
-                <span class="para">Kifogástalan állapotú</span>
-                <span class="para">AKCIÓS termékek</span>
-                <span class="para">Fénysebességű házhozszállítás</span>
-                <span class="para">Garancia természetesen nincs</span>
-            </div>
-        </div>
-    </section>
 
-    <!-- sales -->
     <section>
-        <div>
-            <h2>Akciós termékek</h2>
-            <p class="para2">
-                Itt találhatóak a piacon a legjobb áron elérhető termékeink. Csak
-                most, csak Önnek!
-            </p>
-            <div class="product-wrapper">
-                <div class="vertical-scroll">
-                    <div class="card-container" id="saleProductContainer"></div>
-                </div>
-                <div class="arrows">
-                    <button class="left-arrow">&#8678;</button><button class="right-arrow">&#8680;</button>
-                </div>
-            </div>
-        </div>
-        <div class="marquee">
-            <div class="marquee-content" aria-hidden="true">
-                <span class="para">Prémium minőség</span>
-                <span class="para">Kifogástalan állapotú</span>
-                <span class="para">AKCIÓS termékek</span>
-                <span class="para">Fénysebességű házhozszállítás</span>
-                <span class="para">Garancia természetesen nincs</span>
-            </div>
-            <div class="marquee-content">
-                <span class="para">Prémium minőség</span>
-                <span class="para">Kifogástalan állapotú</span>
-                <span class="para">AKCIÓS termékek</span>
-                <span class="para">Fénysebességű házhozszállítás</span>
-                <span class="para">Garancia természetesen nincs</span>
-            </div>
-        </div>
+        <div id="productPage"></div>
     </section>
 
     <footer>
@@ -174,7 +85,7 @@
             <p>E-mail: MAK@citromail.hu</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="productScript.js"></script>
     <script src="darkmode.js"></script>
     <script src="dropdown.js"></script>
 </body>
