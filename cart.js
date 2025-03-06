@@ -27,20 +27,22 @@ function renderProducts() {
             if (product) {
                 productHtml += `
         <div class="card ${product.category}" id=${product.id}>
+            
+            <div class="product-img-bg"><img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false" onclick="onClickProduct(${product.id})"></div>
             <p class="product-name" onclick="onClickProduct(${product.id})">${product.title}</p>
-            <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false" onclick="onClickProduct(${product.id})">
+            <div class="price-cart">
             <p class="product-price">${product.price * 400} Ft</p>
         `;
         if (JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id)){
             productHtml += 
             `
-            <button class="remove-from-cart" onclick="removeFromCart(${product.id})">Remove from Cart</button></div>
+            <button class="remove-from-cart" onclick="removeFromCart(${product.id})">Remove from Cart</button></div></div>
             `
         }
         else {
             productHtml += 
             `
-            <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button></div>
+            <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button></div></div>
             `
         }
 
@@ -49,7 +51,7 @@ function renderProducts() {
         })
     }
     else {
-        productHtml = `<p>Your cart is empty.</p>`;
+        productHtml = `<p class="para">Your cart is empty.</p>`;
         document.getElementById('productContainer').innerHTML = productHtml;
     }
 };

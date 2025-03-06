@@ -72,7 +72,8 @@ function renderProducts() {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
               <div class="product-img-bg"><img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})"></div>
-              <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p><div class="price-cart">
+              <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
+              <div class="price-cart">
               <p class="product-price">${element.price * 400} Ft</p>
               
         

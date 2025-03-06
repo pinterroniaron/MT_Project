@@ -230,27 +230,19 @@ li {
 }
 
 .card-container {
-	display: flex;
-	justify-content: space-evenly;
 	white-space: nowrap;
-	width: 100%;
-	height: 50%;
+
 	margin-bottom: 20px;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	height: auto;
+	gap: 30px;
+	justify-items: center;
+	width: auto;
 
 }
 
-.vertical-scroll {
-	overflow-y: hidden;
-	overflow-x: auto;
-	scroll-behavior: smooth;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
 
-}
-
-.vertical-scroll::-webkit-scrollbar {
-	display: none;
-}
 
 .card {
 	background-color: #CBCBCB;
@@ -335,43 +327,6 @@ li {
 	font-size: large;
     height: 50px;
 }
-
-@media screen and (max-width: 1200px) {
-	.card-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		height: auto;
-		gap: 30px;
-		justify-items: center;
-		width: auto;
-	}
-
-	.vertical-scroll {
-		overflow: hidden;
-	}
-
-	.vertical-scroll::-webkit-scrollbar {
-		display: unset;
-	}
-
-	.arrows button{
-		display: none;
-	}
-}
-
-.arrows {
-	display: flex;
-	justify-content: center;
-}
-
-.arrows button {
-	background-color: rgba(0, 0, 0, 0);
-	color: rgb(0, 0, 0);
-	font-size: x-large;
-	cursor: pointer;
-	margin: 0 20px 0 20px;
-}
-
 .product-wrapper {
     background-color: #EFEFEF;
 	padding: 20px;
@@ -418,14 +373,14 @@ li {
 
   .para {
     color: black;
-	font-family: "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
   }  
 
   .para2 {
     color: black;
     font-size: 15px;
     margin-bottom: 20px;
-	font-family: "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
   }
 
   .marquee {
