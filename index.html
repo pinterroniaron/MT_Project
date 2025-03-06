@@ -5,11 +5,12 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
     
 
     <title>Webshop</title>
@@ -19,22 +20,22 @@
     <header>
         <nav class="navbar">
             <ul>
-                <a href="index.html">
-                    <li>Home</li>
-                </a>
-                <a href="allProducts.html">
-                    <li>Products</li>
-                </a>
-                <a href="aboutus.html">
-                    <li>About Us</li>
-                </a>
-                <form class="example" action="" style="margin:2px;max-width:300px">
-                    <input type="text" placeholder="Search.." name="search2">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                  </form>
-                <a href="cart.html">
-                    <li>Cart</li>
-                </a>
+                <div class="nav-left">
+                    <a href="index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="allProducts.html">
+                        <li>Products</li>
+                    </a>
+                    <a href="aboutus.html">
+                        <li>About Us</li>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="cart.html">
+                        <li><i class="fa fa-shopping-cart"></i></li>
+                    </a>
+                </div>
             </ul>
         </nav>
     </header>
@@ -42,18 +43,21 @@
     <!-- bemutatkozas -->
     <section>
         <div>
+            <div class="marquee marquee-content">
+                <p class="para ">
+                    Prémium minőség &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kifogástalan állapotú &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AKCIÓS termékek &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fénysebességű házhozszállítás &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Garancia természetesen nincs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
             <h1>Üdvözöljök Önt a MAK webáruház oldalain!</h1>
-            <p>
-                Prémium minőségű, kifogástalan állapotú AKCIÓS termékek tömkelege.
-                Fénysebességű házhozszállítás 1-2 hét. Garancia természetesen nincs.
-            </p>
+            
         </div>
     </section>
-
+    <!-- <section>carousel</section> -->
+    
     <!-- trending -->
     <section>
-        <h1>Trending termékek</h1>
-        <p>
+        <h2>Trending termékek</h2>
+        <p class="para2">
             Itt találhatóak a legújabb és legnépszerűbb termékeink. Ne hagyja ki a
             lehetőséget!
         </p>
@@ -70,8 +74,8 @@
     <!-- sales -->
     <section>
         <div>
-            <h1>Akciós termékek</h1>
-            <p>
+            <h2>Akciós termékek</h2>
+            <p class="para2">
                 Itt találhatóak a piacon a legjobb áron elérhető termékeink. Csak
                 most, csak Önnek!
             </p>

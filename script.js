@@ -71,8 +71,8 @@ function renderProducts() {
         trendingProducts.forEach(element => {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
-              <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
-              <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
+              <div class="product-img-bg"><img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})"></div>
+              <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p><div class="price-cart">
               <p class="product-price">${element.price * 400} Ft</p>
               
         
@@ -80,13 +80,13 @@ function renderProducts() {
         if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
-            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div></div>
             `
         }
         else {
             productHtml += 
             `
-            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            <button class="add-to-cart" onclick="addToCart(${element.id})"><i class="fa fa-shopping-cart"></i></button></div></div>
             `
         }
 
@@ -105,20 +105,22 @@ function renderProducts() {
         saleProducts.forEach(element => {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
+            <div class="product-img-bg">
+            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})"></div>
             <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
+            <div class="price-cart">
             <div class="product-price"><p><s>${element.price * 400} Ft</s></p><p>${Math.round((element.price - element.price * 0.30) * 400)} Ft</p></div>  
         `;
         if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
-            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div></div>
             `
         }
         else {
             productHtml += 
             `
-            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            <button class="add-to-cart" onclick="addToCart(${element.id})"><i class="fa fa-shopping-cart"></i></div></div>
             `
         }
 
@@ -358,6 +360,14 @@ updateProductWrapperBehavior();
 
 //  Re-run when window resizes
 window.addEventListener('resize', updateProductWrapperBehavior);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const marquee = document.querySelector(".marquee-content");
+    const text = marquee.innerHTML;
+  
+    // Duplicate the text for a seamless loop
+    marquee.innerHTML = text + text;
+  });
 
 
 window.onload = init();
