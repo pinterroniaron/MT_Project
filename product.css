@@ -633,6 +633,8 @@ li {
     display: flex;
     flex-direction: column;
     width: 50%;
+	height: 100%;
+	justify-content: space-around;
 }
 
 .nav-drop-right {
