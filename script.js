@@ -177,7 +177,6 @@ function onChangeCategory(value) {
 
 function init() {
     fetchProducts();
-    fetchCart();
 }
 
 function fetchProducts() {
@@ -204,26 +203,6 @@ function fetchProducts() {
         console.error(error);
     }
 }
-
-function fetchCart() {
-    const url = 'https://fakestoreapi.com/carts';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },}
-    try {
-        const response = fetch(url, options).then((res => {
-            const result = res.json().then((data) => {
-                console.log(data);
-            })
-        }));
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
 
 
 
