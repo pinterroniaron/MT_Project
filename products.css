@@ -250,6 +250,7 @@ li {
 	border-radius: 7%;
 	object-fit: cover;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .description {
@@ -269,6 +270,7 @@ li {
 	overflow: visible; /* Prevents breaking out of the card */
 	max-width: 100%; /* Prevents text from overflowing */
 	padding: 15px;
+	cursor: pointer;
 }
 
 .product-price {
