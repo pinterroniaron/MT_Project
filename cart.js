@@ -47,20 +47,13 @@ function renderProducts() {
             document.getElementById('productContainer').innerHTML = productHtml;
             }
         })
-        
-        
     }
     else {
         productHtml = `<p>Your cart is empty.</p>`;
         document.getElementById('productContainer').innerHTML = productHtml;
     }
-
-            
-
-
-   
-
 };
+
 
 function getProductById(id) {
     for (let i = 0; i < products.length; i++) {
@@ -73,15 +66,11 @@ function getProductById(id) {
   };
 
 function onClickProduct(id) {
-    
     getProductById(id);
-    
-    window.location.href = `product.html?id=${id}`;
-    
+    window.location.href = `product.html?id=${id}`;  
 }
        
 console.log(product);
-
 
 function init() {
     fetchProducts();
@@ -132,12 +121,6 @@ function addToCart(productId) {
         renderProducts()
     }
 }
-
-
-
-
-
-
 
 
 window.onload = init();
