@@ -11,12 +11,16 @@
                 let product = products.find(product => product.id == productId);
                 productHtml += `
                 
-                <div class="product-container" id="${product.id}">
+                <div class="product-section-container" id="${product.id}">
+                    <div class="section-left">
+                    <p class="product-name">${product.title}</p>
                     <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false">
-                    <div class="product-details">
-                        <p class="product-name">${product.title}</p>
+                    </div>
+                    <div class="section-right">            
                         <p class="product-price">${product.price * 400} Ft</p>
+                        
                         <p class="product-description">${product.description}</p>
+                    
             
             `;
 
