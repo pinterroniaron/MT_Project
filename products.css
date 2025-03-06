@@ -1,3 +1,50 @@
+:root {
+	--base-color: white;
+	--primary-color: #EFEFEF;
+	--secondary-color: #CBCBCB;
+	--text-color: black;
+	--secondary-text-color: white;
+    --accent-color: rgb(172, 172, 172);
+	--secondary-accent-color: rgb(202, 201, 195);
+}
+.darkmode {
+	--base-color: #1D2125;
+	--primary-color:#15181b;
+	--secondary-color: #282E33;
+	--text-color: white;
+	--secondary-text-color: black;
+    --accent-color: #1D7AFC;
+	--secondary-accent-color: #0f3974;
+}
+
+#theme-toggle{
+	height: 50px;
+	width: 50px;
+	padding: 0;
+	border-radius: 50%;
+	background-color: var(--base-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#theme-toggle svg {
+	fill: var(--accent-color);
+
+}
+
+#theme-toggle svg:first-child {
+	display: none;
+}
+
+.darkmode #theme-toggle svg:last-child {
+	display: none;
+}
+.darkmode #theme-toggle svg:first-child {
+	display: block;
+}
+
 html,
 body,
 div,
@@ -102,14 +149,14 @@ section {
 	display: block;
 }
 
-body {
+/* body {
 	line-height: 1;
 	background-color: rgb(44, 44, 44);
 	color: white;
 	overflow-x: hidden;
 	font-family: 'Caveat', cursive !important;
 
-}
+} */
 
 ol,
 ul {
@@ -136,7 +183,7 @@ table {
 
 
 
-.navbar ul a li {
+/* .navbar ul a li {
 	list-style: none;
 	font-size: 1.5vw;
 	color: white;
@@ -160,6 +207,53 @@ table {
 	width: 100%;
 	height: 60px;
 
+} */
+
+.navbar ul a li {
+	list-style: none;
+	font-size: 1.5vw;
+	color: var(--text-color);
+}
+
+.navbar ul a {
+	text-decoration: none;
+}
+
+.navbar ul {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    padding: 0 10px 0 10px;
+	
+
+}
+.nav-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25%;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.nav-right {
+    width: 25%;
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+	height: 100%;
+	gap: 20px;
+	align-items: center;
+	align-items: center;
+}
+
+.navbar {
+	background-color: var(--primary-color);
+	width: 100%;
+	height: 60px;
+
 }
 
 header {
@@ -170,10 +264,17 @@ header {
 
 h1 {
 	text-align: center;
-	color: red;
+    /* background-color: #0b9fda; */
+	color: var(--text-color);
 	font-size: 1.7rem;
 	margin-top: 15px;
-	margin-bottom: 15px
+	margin-bottom: 15px;
+    text-transform: uppercase;
+    
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
 
 p {
