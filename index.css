@@ -328,11 +328,10 @@ li {
 }
 
 .remove-from-cart{
-	background-color: rgb(255, 0, 0);
+	background-color: rgb(71, 0, 0);
 	color: white;
 	border-radius: 50px;
 	padding: 10px;
-	margin-bottom: 10px;
 	font-size: large;
     height: 50px;
 }
