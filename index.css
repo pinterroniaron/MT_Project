@@ -617,4 +617,10 @@ i{
 	position: absolute;
 	top: 0;
 	right: 0;
+	background-color: var(--primary-color);
+	border: none;
+}
+
+.close-button svg {
+	fill: var(--text-color);
 }
