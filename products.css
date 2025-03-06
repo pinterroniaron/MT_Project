@@ -311,3 +311,49 @@ li {
 	margin-bottom: 10px;
 	font-size: large;
 }
+
+#right {
+	display: flex;
+	justify-content: end;
+	margin-right: 15px;
+}
+
+form.search {
+	margin: 2px;
+	max-width: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+  form.example input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 80%;
+	background: #f1f1f1;
+  }
+  
+  form.example button {
+	float: left;
+	width: 20%;
+	padding: 10px;
+	background: #0c0c0c;
+	color: rgb(253, 253, 253);
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+  }
+  
+  form.example button:hover {
+	background: #ff0202;
+	color: black;
+  }
+  
+  form.example::after {
+	content: "";
+	clear: both;
+	display: table;
+  }

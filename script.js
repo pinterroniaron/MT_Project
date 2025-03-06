@@ -3,18 +3,19 @@ let filteredProducts = [];
 var product = {};
 const saleProducts = [];
 const trendingProducts = [];
+let fuzzyProducts = [];
 
 function filterByCategory(category) {
-    if (category) {
-        filteredProducts = products.filter(element => element.category === category);
-        if (category === 'all') {
-            filteredProducts = products;
-        }
+  if (category) {
+    filteredProducts = products.filter(element => element.category === category);
+    if (category === 'all') {
+      filteredProducts = products;
     }
-    else {
-        filteredProducts = products;
-    }
-    console.log(filteredProducts);
+  }
+  else {
+    filteredProducts = products;
+  }
+  console.log(filteredProducts);
 
 }
 
@@ -33,9 +34,7 @@ function randomizeProducts() {
 
 function renderProducts() {
     let productHtml = '';
-    
-
-
+     
     // All Products - Filtered Products
     if (document.getElementById('productContainer')) {
         filteredProducts.forEach(element => {
@@ -58,7 +57,7 @@ function renderProducts() {
             `
         }
 
-            document.getElementById('productContainer').innerHTML = productHtml;
+      document.getElementById('productContainer').innerHTML = productHtml;
 
         });
     };
@@ -94,11 +93,8 @@ function renderProducts() {
             document.getElementById('trendingProductContainer').innerHTML = productHtml;
         });
     };
-
-    
       
     productHtml = '';
-
 
     // Sale Products
     if (document.getElementById('saleProductContainer')) {
@@ -172,14 +168,14 @@ function onClickProduct(id) {
 }
 
 function onChangeCategory(value) {
-    console.log(value);
+  console.log(value);
 
-    filterByCategory(value);
-    renderProducts();
+  filterByCategory(value);
+  renderProducts();
 }
 
 function init() {
-    fetchProducts();
+  fetchProducts();
 }
 
 function fetchProducts() {
@@ -205,7 +201,7 @@ function fetchProducts() {
     catch (error) {
         console.error(error);
     }
-}
+  }
 
 
 
@@ -269,7 +265,7 @@ function updateProductWrapperBehavior() {
 
       //  Remove attribute tracking events
       container.removeAttribute('data-events-added');
-      
+
     } else {
       //  Enable custom scrolling behavior
       container.style.overflowX = 'hidden'; // Hide native scrollbar
@@ -362,5 +358,35 @@ updateProductWrapperBehavior();
 //  Re-run when window resizes
 window.addEventListener('resize', updateProductWrapperBehavior);
 
+
+
+
+function renderProducts2() {
+  let productHtml = '';
+  fuzzyProducts.forEach(element => {
+    productHtml += `
+    <div class="card ${element.category}">
+      <p class="product-name">${element.title}</p>
+      <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false">
+      <p class="product-price">${element.price * 400} Ft</p>
+    </div>
+    `;
+
+    document.getElementById('productContainer').innerHTML = productHtml;
+
+  });
+
+}
+
+function fuzzySearch() {
+
+  let searchValue = document.getElementById('fuzzySearchInput').value.toLowerCase();
+  console.log(searchValue);
+  fuzzyProducts = products.filter(element => element.title.toLowerCase().includes(searchValue));
+  if (fuzzyProducts.length === 0) {
+    fuzzyProducts = [{ title: 'Nincs találat' }];
+  }
+  renderProducts2();
+}
 
 window.onload = init();
