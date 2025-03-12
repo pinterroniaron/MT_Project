@@ -251,6 +251,8 @@ h1 {
     font-style: normal;
 }
 
+
+
 p {
 	text-align: center;
 	font-size: 1.2rem;
@@ -259,12 +261,13 @@ p {
 }
 
 footer {
-	background-color: black;
-	color: white;
+	background-color: var(--secondary-color);
+	color: var(--text-color);
 	text-align: center;
 	padding: 10px;
 	bottom: 0;
 	width: 100%;
+	bottom: auto;
 }
 
 li {
@@ -280,7 +283,7 @@ li {
     display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	height: auto;
-	gap: 30px;
+	gap: 20px;
 	justify-items: center;
 	width: auto;
 
@@ -299,6 +302,10 @@ li {
 	display: none;
 }
 
+i{
+	color: var(--text-color);
+}
+
 .card {
 	background-color: rgba(0, 0, 0, 0.63);
 	color: white;
@@ -313,9 +320,7 @@ li {
 	align-items: center;
 }
 
-/* .card p {
-	color: white;
-} */
+
 
 
 .card img {
@@ -387,10 +392,11 @@ li {
 	font-size: large;
 }
 
-#right {
+.right {
 	display: flex;
 	justify-content: end;
 	margin-right: 15px;
+	padding-top: 15px;
 }
 
 form.search {
@@ -414,7 +420,7 @@ form.search {
 	float: left;
 	width: 20%;
 	padding: 10px;
-	background: #0c0c0c;
+	background: #EFEFEF;
 	color: rgb(253, 253, 253);
 	font-size: 17px;
 	border: 1px solid grey;
@@ -423,7 +429,7 @@ form.search {
   }
   
   form.example button:hover {
-	background: #ff0202;
+	background: #CBCBCB;
 	color: black;
   }
   
@@ -431,4 +437,9 @@ form.search {
 	content: "";
 	clear: both;
 	display: table;
+  }
+
+  .dropwdown-list {
+	display: flex;
+	justify-content: end;
   }
