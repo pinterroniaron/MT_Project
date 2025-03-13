@@ -177,16 +177,14 @@ section {
 	display: block;
 }
 
-body {
+
 body {
 	line-height: 1;
 	background-color: var(--base-color);
 	color: var(--text-color);
-	background-color: var(--base-color);
-	color: var(--text-color);
 	overflow-x: hidden;
 
-}
+
 }
 
 ol,
@@ -270,10 +268,10 @@ header {
 h1 {
 	text-align: center;
     /* background-color: #0b9fda; */
+	background-color: var(--base-color);
 	color: var(--text-color);
 	font-size: 1.7rem;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	padding-top: 10px;
     text-transform: uppercase;
     
     font-family: "Playfair Display", serif;
@@ -444,6 +442,7 @@ i{
 	padding-top: 15px;
 	padding-bottom: 10px;
 	padding-bottom: 10px;
+	background-color: var(--base-color);
 }
 
 form.search {
