@@ -468,10 +468,7 @@ form.search {
 	clear: both;
 	display: table;
   }
-
-
-
-.dropdown {
+  .dropdown {
     display: none;
 	width: 40px;
 	height: 40px;
