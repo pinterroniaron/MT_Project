@@ -44,6 +44,34 @@
 	display: block;
 }
 
+#theme-toggle2{
+	height: 50px;
+	width: 50px;
+	padding: 0;
+	border-radius: 50%;
+	background-color: var(--base-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#theme-toggle2 svg {
+	fill: var(--accent-color);
+
+}
+
+#theme-toggle2 svg:first-child {
+	display: none;
+}
+
+.darkmode #theme-toggle2 svg:last-child {
+	display: none;
+}
+.darkmode #theme-toggle2 svg:first-child {
+	display: block;
+}
+
 html,
 body,
 div,
