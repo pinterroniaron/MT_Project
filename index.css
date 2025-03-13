@@ -545,6 +545,15 @@ i{
 		display: flex;
 		justify-content: center;
 	}
+	
+	
+	.marquee-content {
+
+		white-space: nowrap;
+		gap: 100px;
+		animation: scroll 10s linear infinite;
+
+	  }
 }
 
 .dropdown-content {
