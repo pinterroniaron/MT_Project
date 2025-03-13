@@ -149,14 +149,13 @@ section {
 	display: block;
 }
 
-/* body {
+body {
 	line-height: 1;
-	background-color: rgb(44, 44, 44);
-	color: white;
+	background-color: var(--base-color);
+	color: var(--text-color);
 	overflow-x: hidden;
-	font-family: 'Caveat', cursive !important;
 
-} */
+}
 
 ol,
 ul {
@@ -307,13 +306,12 @@ i{
 }
 
 .card {
-	background-color: rgba(0, 0, 0, 0.63);
-	color: white;
+	background-color: var(--secondary-color);
+	color: var(--text-color);
 	width: 20rem;
 	height: auto;
-	border-radius: 7%;
 	flex: 0 0 auto;
-	margin: 0 20px;
+	margin: 0 1px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -370,7 +368,19 @@ i{
 }
 
 .product-wrapper {
+	background-color: var(--primary-color);
 	padding: 20px;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: var(--primary-color);
+    width: 95%;
+	height: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+	top: -200px;
+	transition: top 500ms ease-in-out;
 }
 .add-to-cart{
 	margin-top: auto;
@@ -397,6 +407,7 @@ i{
 	justify-content: end;
 	margin-right: 15px;
 	padding-top: 15px;
+	padding-bottom: 10px;
 }
 
 form.search {
@@ -443,3 +454,12 @@ form.search {
 	display: flex;
 	justify-content: end;
   }
+
+  
+.close-button{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: var(--primary-color);
+	border: none;
+}
