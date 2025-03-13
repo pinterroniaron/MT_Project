@@ -40,20 +40,22 @@ function renderProducts() {
         filteredProducts.forEach(element => {
             productHtml += `
         <div class="card ${element.category}" id=${element.id}>
+            
+            <div class="product-img-bg"><img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})"></div>
             <p class="product-name" onclick="onClickProduct(${element.id})">${element.title}</p>
-            <img src="${element.image}" alt="${element.title}" title="${element.title}" class="product-img" draggable="false" onclick="onClickProduct(${element.id})">
+            <div class="price-cart">
             <p class="product-price">${element.price * 400} Ft</p>
         `;
         if (JSON.parse(localStorage.getItem("cart") || "[]").includes(element.id)){
             productHtml += 
             `
-            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div>
+            <button class="remove-from-cart" onclick="removeFromCart(${element.id})">Remove from Cart</button></div></div>
             `
         }
         else {
             productHtml += 
             `
-            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div>
+            <button class="add-to-cart" onclick="addToCart(${element.id})">Add to Cart</button></div></div>
             `
         }
 
@@ -132,7 +134,7 @@ function renderProducts() {
         productHtml = `
         
         <div class="product-container" id="${product.id}">
-            <img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false">
+            <div class="product-img-bg"></div><img src="${product.image}" alt="${product.title}" title="${product.title}" class="product-img" draggable="false"></div>
             <div class="product-details">
                 <p class="product-name">${product.title}</p>
                 <p class="product-price">${product.price * 400} Ft</p>
