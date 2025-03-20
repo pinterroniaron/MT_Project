@@ -265,7 +265,6 @@ header {
 
 h1 {
 	text-align: center;
-    /* background-color: #0b9fda; */
 	color: var(--text-color);
 	font-size: 1.7rem;
 	margin-top: 15px;
@@ -463,10 +462,6 @@ i{
     background-color: var(--primary-color);
 	padding: 20px;
 }
-
-/* body {
-	font-family: Arial;
-  } */
   
   * {
 	box-sizing: border-box;
@@ -534,11 +529,6 @@ i{
 	animation: scroll 20s linear infinite;
 	width: 100%;
   }
-
- 
-  /* .marquee-content:hover {
-	animation-play-state: paused;
-  } */
 
   @keyframes scroll {
 	to {

@@ -234,11 +234,6 @@ li {
 	align-items: center;
 }
 
-/* .card p {
-	color: white;
-} */
-
-
 .card img {
 	width: 70%;
 	height: auto;
@@ -333,12 +328,6 @@ li {
 	padding: 20px;
 }
 
-
-
-/* body {
-	font-family: Arial;
-  } */
-  
   * {
 	box-sizing: border-box;
   }
