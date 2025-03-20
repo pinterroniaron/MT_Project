@@ -266,7 +266,6 @@ header {
 
 h1 {
 	text-align: center;
-    /* background-color: #0b9fda; */
 	background-color: var(--base-color);
 	color: var(--text-color);
 	font-size: 1.7rem;
